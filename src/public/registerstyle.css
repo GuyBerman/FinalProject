@@ -1,0 +1,30 @@
+.boxes {
+  font-weight: bolder;
+  width: 400px;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 2px solid #dee9eb;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  top: 200px;
+  left: 50px;
+}
+.title {
+  font-weight: bolder;
+  font-size: 25px;
+  width: 400px;
+  height: 30px;
+  position: relative;
+  top: 140px;
+  left: 180px;
+}
+.btns {
+  font-weight: bolder;
+  font-size: 25px;
+  width: 400px;
+  height: 30px;
+  position: relative;
+  top: 250px;
+  left: 180px;
+}
