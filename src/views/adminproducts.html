@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Product Listing Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Product Listing</h1>
+      <div id="productCount"></div>
+      <!-- Indicator for the number of products -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <table id="products" class="col col-4">
+            <td><span></span></td>
+          </table>
+        </tbody>
+      </table>
+
+      <!-- Add New Product Form -->
+      <div id="newProductForm" style="display: none">
+        <h2>Add New Product</h2>
+        <form onsubmit="event.preventDefault(); addProduct();">
+          <div class="form-group">
+            <label for="productName">Name</label>
+            <input type="text" class="form-control" id="productName" required />
+          </div>
+          <div class="form-group">
+            <label for="productDescription">Description</label>
+            <textarea
+              class="form-control"
+              id="productDescription"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="productPrice">Price</label>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input
+                type="number"
+                class="form-control"
+                id="productPrice"
+                step="0.01"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="productStock">Stock</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productStock"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="productImage">Image</label>
+            <input type="file" class="form-control-file" id="productImage" />
+          </div>
+          <a href="/admin" type="submit" class="btn btn-primary">Add Product</a
+          >>
+        </form>
+        <button class="btn btn-danger" onclick="cancelAddProduct()">
+          Cancel
+        </button>
+      </div>
+
+      <a href="/admin" type="submit" class="btn btn-primary">Add Product</a>
+    </div>
+
+    <!-- JavaScript code -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      // Function to update the product count indicator
+      function updateProductCount() {
+        var productCount = $(".table tbody tr").length;
+        $("#productCount").html("<p>Total Products: " + productCount + "</p>");
+      }
+
+      function showNewProductForm() {
+        $("#newProductForm").toggle();
+        $('[onclick="showNewProductForm()"]').toggle();
+      }
+
+      function addProduct() {
+        // Get the values from the form
+        var name = $("#productName").val();
+        var description = $("#productDescription").val();
+        var price = $("#productPrice").val();
+        var stock = $("#productStock").val();
+        var image = $("#productImage").val();
+
+        // Perform validation
+        if (name === "" || description === "" || price === "" || stock === "") {
+          alert("Please fill in all the fields.");
+          return;
+        }
+
+        if (isNaN(stock) || isNaN(parseFloat(price))) {
+          alert("Please enter a valid number for Stock and Price fields.");
+          return;
+        }
+
+        // Add the new product to the table
+        var productId = $(".table tbody tr").length + 1;
+        var newRow =
+          "<tr>" +
+          '<td><img src="' +
+          image +
+          '" alt="' +
+          name +
+          '" style="width: 100px; height: 100px;"></td>' +
+          '<td><span id="product' +
+          productId +
+          'Name">' +
+          name +
+          "</span></td>" +
+          '<td><span id="product' +
+          productId +
+          'Description">' +
+          description +
+          "</span></td>" +
+          '<td><span id="product' +
+          productId +
+          'Price">$' +
+          price +
+          "</span></td>" +
+          '<td><span id="product' +
+          productId +
+          'Stock">' +
+          stock +
+          "</span></td>" +
+          "<td>" +
+          '<button class="btn btn-primary btn-sm" onclick="editProduct(' +
+          productId +
+          ')">Edit</button>' +
+          '<button class="btn btn-success btn-sm" onclick="updateProduct(' +
+          productId +
+          ')" style="display: none;">Update</button>' +
+          '<button class="btn btn-danger btn-sm" onclick="deleteProduct(' +
+          productId +
+          ')">Delete</button>' +
+          "</td>" +
+          "</tr>";
+
+        $(".table tbody").append(newRow);
+
+        // Clear the form
+        $("#productName").val("");
+        $("#productDescription").val("");
+        $("#productPrice").val("");
+        $("#productStock").val("");
+        $("#productImage").val("");
+
+        // Hide the form
+        $("#newProductForm").hide();
+        $('[onclick="showNewProductForm()"]').show();
+
+        // Update the product count
+        updateProductCount();
+      }
+
+      function cancelAddProduct() {
+        $("#newProductForm").hide();
+        $('[onclick="showNewProductForm()"]').show();
+      }
+
+      function editProduct(productId) {
+        // Enable the input fields for editing
+        $("#product" + productId + "Name").html(
+          '<input type="text" class="form-control" value="' +
+            $("#product" + productId + "Name").html() +
+            '">'
+        );
+        $("#product" + productId + "Description").html(
+          '<textarea class="form-control" rows="3">' +
+            $("#product" + productId + "Description").html() +
+            "</textarea>"
+        );
+        $("#product" + productId + "Price").html(
+          '<div class="input-group"><span class="input-group-addon">$</span><input type="number" step="0.01" class="form-control" value="' +
+            $("#product" + productId + "Price")
+              .html()
+              .substring(1) +
+            '"></div>'
+        );
+        $("#product" + productId + "Stock").html(
+          '<input type="number" class="form-control" value="' +
+            $("#product" + productId + "Stock").html() +
+            '">'
+        );
+
+        // Hide the "Edit" button and show the "Update" button
+        $('button[onclick="editProduct(' + productId + ')"]').hide();
+        $('button[onclick="updateProduct(' + productId + ')"]').show();
+      }
+
+      function updateProduct(productId) {
+        // Get the updated values from the input fields
+        var name = $("#product" + productId + "Name input").val();
+        var description = $(
+          "#product" + productId + "Description textarea"
+        ).val();
+        var price = $("#product" + productId + "Price input").val();
+        var stock = $("#product" + productId + "Stock input").val();
+
+        // Perform validation
+        if (name === "" || description === "" || price === "" || stock === "") {
+          alert("Please fill in all the fields.");
+          return;
+        }
+
+        if (isNaN(stock) || isNaN(parseFloat(price))) {
+          alert("Please enter a valid number for Stock and Price fields.");
+          return;
+        }
+
+        // Update the product details in the table
+        $("#product" + productId + "Name").html(name);
+        $("#product" + productId + "Description").html(description);
+        $("#product" + productId + "Price").html("$" + price);
+        $("#product" + productId + "Stock").html(stock);
+
+        // Hide the input fields and show the "Edit" button
+        $('button[onclick="editProduct(' + productId + ')"]').show();
+        $('button[onclick="updateProduct(' + productId + ')"]').hide();
+      }
+
+      function deleteProduct(productId) {
+        if (confirm("Are you sure you want to delete this product?")) {
+          $("#product" + productId + "Name")
+            .closest("tr")
+            .remove();
+
+          // Update the product count
+          updateProductCount();
+        }
+      }
+
+      // Initial update of product count
+      updateProductCount();
+    </script>
+    <script src="adminproducts.js"></script>
+  </body>
+</html>

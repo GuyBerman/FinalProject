@@ -28,6 +28,9 @@ app.get("/signin", (req, res) => {
 app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/admin.html"));
 });
+app.get("/admin2", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/adminproducts.html"));
+});
 
 const start = async () => {
   await mongoose.connect(
