@@ -29,17 +29,58 @@ const fetchimages = async () => {
     tr.appendChild(name);
 
     const price = document.createElement("td");
-    price.style.paddingLeft = "180px";
+    price.style.paddingLeft = "200px";
     price.innerHTML = image.price;
     tr.appendChild(price);
 
     const stock = document.createElement("td");
-    stock.style.paddingLeft = "175px";
+    stock.style.paddingLeft = "190px";
     stock.innerHTML = image.quantity;
     tr.appendChild(stock);
+
+    const del = document.createElement("td");
+    del.style.paddingLeft = "190px";
+    const deleteprod = document.createElement("button");
+    deleteprod.style.color = "white";
+    deleteprod.style.backgroundColor = "red";
+    deleteprod.innerHTML = "Delete";
+    deleteprod.id = "deleteBtn";
+    deleteprod.name = image.name;
+    del.appendChild(deleteprod);
+    tr.appendChild(del);
 
     table.appendChild(tr); // Append the table row to the table
   });
 };
 
 fetchimages();
+
+document.addEventListener("click", async (e) => {
+  try {
+    const response = await fetch("/api/deleteProduct", {
+      method: "DELETE",
+      body: JSON.stringify({
+        name: e.target.name,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
+    }
+
+    // Product deleted successfully
+    console.log("Product deleted successfully");
+
+    // Check if the clicked element is a button
+    if (e.target.tagName.toLowerCase() === "button") {
+      // Refresh the site
+      location.reload();
+    }
+  } catch (error) {
+    console.error("Error deleting product:", error.message);
+  }
+});

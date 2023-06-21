@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 router.put("/api/updatePrice", async (req, res) => {
-  const { name, price, admin } = req.body;
+  const { name, price, quantity, admin } = req.body;
   if (!admin) {
     return res.send("You are not an admin");
   }
@@ -14,6 +14,7 @@ router.put("/api/updatePrice", async (req, res) => {
     return res.send("Item not found!!!!!!");
   }
   product.price = price;
+  product.quantity = quantity;
   await product.save();
   res.send(product);
 });
