@@ -5,6 +5,7 @@ const { getRouter } = require("./routes/get");
 const { createRouter } = require("./routes/create");
 const { signinRouter } = require("./routes/signin");
 const { updateRouter } = require("./routes/update");
+const { deleteRouter } = require("./routes/delete");
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(getRouter);
 app.use(createRouter);
 app.use(signinRouter);
 app.use(updateRouter);
+app.use(deleteRouter);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/home.html"));
@@ -31,7 +33,9 @@ app.get("/admin", (req, res) => {
 app.get("/admin2", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/adminproducts.html"));
 });
-
+app.get("/cart", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/cart.html"));
+});
 const start = async () => {
   await mongoose.connect(
     "mongodb+srv://GuyBerman:ddhhttddhhtt11@store.emokjq8.mongodb.net/Store"

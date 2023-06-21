@@ -67,6 +67,7 @@ const fetchimages = async () => {
     price.style.fontSize = "25px";
     price.style.fontFamily = "Monospace";
     const buy = document.createElement("button");
+    buy.id = image.name;
     buy.innerHTML = "Buy";
 
     col.className = "col col-3";
