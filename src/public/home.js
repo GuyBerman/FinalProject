@@ -19,6 +19,32 @@ if (!storage) {
   }
 }
 
+  document.addEventListener('DOMContentLoaded', function () {
+    var searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', function () {
+      var searchInput = document.getElementById('search-input');
+      var searchText = searchInput.value.trim();
+      if (searchText !== '') {
+        // Perform search operation here
+        alert('Searching for: ' + searchText);
+      }
+    });
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', function () {
+      var searchInput = document.getElementById('search-input');
+      var searchText = searchInput.value.trim();
+      if (searchText !== '') {
+        // Perform search operation here
+        alert('Searching for: ' + searchText);
+      }
+    });
+  });
+
+
 const fetchimages = async () => {
   const res = await fetch("/api/getProducts");
   const products = await res.json();
@@ -53,3 +79,4 @@ const fetchimages = async () => {
   });
 };
 fetchimages();
+
