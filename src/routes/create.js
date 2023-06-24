@@ -36,6 +36,7 @@ router.post("/api/createUser", async (req, res) => {
     password,
     firstname,
     lastname,
+    cart: {},
   });
   await user.save();
   res.send(user);

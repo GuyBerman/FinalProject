@@ -1,5 +1,6 @@
 const prodname = document.getElementById("prodname");
 const price = document.getElementById("prodprice");
+const changeq = document.getElementById("prodqua");
 
 document.getElementById("updatebtn").addEventListener("click", async () => {
   await fetch("/api/updatePrice", {
@@ -7,6 +8,7 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
     body: JSON.stringify({
       name: prodname.value,
       price: price.value,
+      quantity: changeq.value,
       admin: true,
     }),
     headers: {
