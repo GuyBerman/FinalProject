@@ -42,9 +42,11 @@ app.get("/admin", (req, res) => {
 app.get("/admin2", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/adminproducts.html"));
 });
+
 app.get("/settings", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/settings.html"));
 });
+
 app.get("/cart", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/cart.html"));
 });
