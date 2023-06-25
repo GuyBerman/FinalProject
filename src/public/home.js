@@ -70,6 +70,11 @@ const fetchimages = async () => {
     buy.id = image.name;
     buy.innerHTML = "Buy";
 
+    // Add event listener to the Buy button
+    buy.addEventListener("click", () => {
+      addToCart(buy.id, image.price);
+    });
+
     col.className = "col col-3";
     col.appendChild(image.image);
     col.appendChild(name);
@@ -79,5 +84,28 @@ const fetchimages = async () => {
     document.getElementById("images").appendChild(col);
   });
 };
+
+const userId = storage._id;
+const addToCart = async (productName, price) => {
+  try {
+    const res = await fetch("/api/addToCart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId,
+        productName,
+        price,
+      }),
+    });
+    const data = await res.json();
+    localStorage.setItem("user", JSON.stringify(data));
+    location.reload();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 fetchimages();
 
