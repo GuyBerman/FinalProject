@@ -21,11 +21,6 @@ const fetchimages = async () => {
     email.innerHTML = user.email;
     tr.appendChild(email);
 
-    const cartItems = document.createElement("td");
-    const productNames = Object.keys(user.cart).join(", ");
-    cartItems.innerHTML = productNames;
-    console.log(productNames);
-
     const firstname = document.createElement("td");
     firstname.innerHTML = user.firstname;
     firstname.style.paddingLeft = "130px";
@@ -91,42 +86,3 @@ document.addEventListener("click", async (e) => {
     console.error("Error deleting product:", error.message);
   }
 });
-
-const fetchCart = async () => {
-  try {
-    const res = await fetch("/api/getUser");
-    const users = await res.json();
-
-    users.map((user) => {
-      const userId = user._id; // Assuming the user ID field is named _id
-
-      // Check if the user has a cart
-      if (user.cart) {
-        const cartItems = user.cart;
-        const productNames = Object.keys(cartItems).join(", ");
-
-        // Create table row for the cart
-        const cartRow = document.createElement("tr");
-
-        // Create table cells for user ID and cart items
-        const userIdCell = document.createElement("td");
-        userIdCell.innerHTML = userId;
-        console.log(userIdCell);
-        cartRow.appendChild(userIdCell);
-
-        const cartItemsCell = document.createElement("td");
-        cartItemsCell.innerHTML = productNames;
-        console.log(cartItemsCell);
-        cartRow.appendChild(cartItemsCell);
-
-        // Append the cart row to the table
-        const cartTable = document.getElementById("cartTable");
-        cartTable.appendChild(cartRow);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-fetchCart();
