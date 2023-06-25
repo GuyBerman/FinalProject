@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="registerstyle.css" />
-  </head>
-  <body>
-    <title>Sign in</title>
-    <p class="title">Please sign in</p>
-    <div class="thing">
-      <input type="email" class="boxes" id="email" placeholder="Enter Email" />
-      <input
-        type="password"
-        class="boxes"
-        id="password"
-        placeholder="Enter Password"
-      />
-      <input class="boxes" id="firstname" placeholder="Enter First name: " />
-      <input class="boxes" id="lastname" placeholder="Enter Last name" />
-      <div class="btns">
-        <button type="button" id="register" class="btn btn-primary">
-          Register
-        </button>
-
-        <button type="button" class="btn btn-success">Sign in</button>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/registerstyle.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="thing">
+    <div class="form">
+      <form class="register-form">
+        <input class="boxes" id="firstname" placeholder="First Name">
+        <input class="boxes" id="lastname" placeholder="Last Name">
+        <input type="email" class="boxes" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="confirmpassword" placeholder="Confirm Password">
+        <button type="button" id="register" class="btn btn-primary" onclick="return validatePassword();">Register</button>
+      </form>
     </div>
-    <script src="/register.js"></script>
-  </body>
+  </div>
+  <script src="/register.js"></script>
+</body>
 </html>

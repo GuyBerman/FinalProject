@@ -4,7 +4,15 @@ register.addEventListener("click", async () => {
   const password = document.getElementById("password");
   const firstname = document.getElementById("firstname");
   const lastname = document.getElementById("lastname");
+  const confirmPassword = document.getElementById("confirmpassword");
 
+  // Password validation
+  if (password.value !== confirmPassword.value) {
+    alert("Password and Confirm Password do not match.");
+    return;
+  }
+
+  // Send user registration data to the server
   await fetch("/api/createUser", {
     method: "POST",
     body: JSON.stringify({
@@ -18,8 +26,10 @@ register.addEventListener("click", async () => {
     },
   });
 
+  // Clear input fields after successful registration
   email.value = "";
   password.value = "";
   firstname.value = "";
   lastname.value = "";
+  confirmpassword.value="";
 });
