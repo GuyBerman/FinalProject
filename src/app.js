@@ -48,13 +48,19 @@ app.get("/admin", (req, res) => {
 app.get("/admin2", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/adminproducts.html"));
 });
+app.get("/userinfo", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/userinfo.html"));
+});
 
-app.get("/settings", (req, res) => {
-  res.sendFile(path.join(__dirname, "./views/settings.html"));
+app.get("/passchange", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/passchange.html"));
 });
 
 app.get("/cart", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/cart.html"));
+});
+app.get("/transactionhistory", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/usertransactions.html"));
 });
 const start = async () => {
   await mongoose.connect(
