@@ -39,6 +39,7 @@ if (!storage) {
 
 
   document.addEventListener('DOMContentLoaded', function () {
+    fetchimages();
     var searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', function () {
       var searchInput = document.getElementById('search-input');
