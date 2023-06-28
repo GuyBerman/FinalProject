@@ -19,31 +19,29 @@ if (!storage) {
   }
 }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var searchButton = document.getElementById('search-button');
-    searchButton.addEventListener('click', function () {
-      var searchInput = document.getElementById('search-input');
-      var searchText = searchInput.value.trim();
-      if (searchText !== '') {
-        // Perform search operation here
-        alert('Searching for: ' + searchText);
-      }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  var searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", function () {
+    var searchInput = document.getElementById("search-input");
+    var searchText = searchInput.value.trim();
+    if (searchText !== "") {
+      // Perform search operation here
+      alert("Searching for: " + searchText);
+    }
   });
+});
 
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var searchButton = document.getElementById('search-button');
-    searchButton.addEventListener('click', function () {
-      var searchInput = document.getElementById('search-input');
-      var searchText = searchInput.value.trim();
-      if (searchText !== '') {
-        // Perform search operation here
-        alert('Searching for: ' + searchText);
-      }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  var searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", function () {
+    var searchInput = document.getElementById("search-input");
+    var searchText = searchInput.value.trim();
+    if (searchText !== "") {
+      // Perform search operation here
+      alert("Searching for: " + searchText);
+    }
   });
-
+});
 
 const fetchimages = async () => {
   const res = await fetch("/api/getProducts");
@@ -68,6 +66,7 @@ const fetchimages = async () => {
     price.style.fontFamily = "Monospace";
     const buy = document.createElement("button");
     buy.id = image.name;
+    buy.className = "btn btn-success";
     buy.innerHTML = "Buy";
 
     // Add event listener to the Buy button
@@ -108,4 +107,3 @@ const addToCart = async (productName, price) => {
 };
 
 fetchimages();
-

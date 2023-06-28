@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>Product Listing</h1>
+      <h1>User list</h1>
       <div id="productCount"></div>
       <!-- Indicator for the number of products -->
       <table class="table table-striped">
@@ -22,7 +22,6 @@
             <th style="width: 300px">Last name</th>
             <th style="width: 300px">Password</th>
             <th style="width: 300px">Admin</th>
-            <th style="width: 300px">Transaction</th>
           </tr>
         </thead>
         <tbody>
@@ -91,10 +90,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
       // Function to update the product count indicator
-      function updateProductCount() {
-        var productCount = $(".table tbody tr").length;
-        $("#productCount").html("<p>Total Products: " + productCount + "</p>");
-      }
 
       function showNewProductForm() {
         $("#newProductForm").toggle();
