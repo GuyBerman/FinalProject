@@ -62,3 +62,6 @@ rgb(208, 191, 176) 50%
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.navbar .navbar-nav .nav-item {
+  list-style-type: none;
+}

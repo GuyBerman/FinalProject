@@ -1,0 +1,52 @@
+/* Custom CSS for Product Listing Page */
+
+/* Center the product count */
+#productCount {
+    text-align: center;
+    margin-bottom: 20px;
+    text-size-adjust: 20px;
+  }
+  
+  /* Style the table */
+  .table {
+    margin-bottom: 30px;
+  }
+  
+  /* Style the product image */
+  .table td img {
+    width: 150x;
+    height: 100px;
+  }
+  
+  /* Style the Add Product button */
+  #newProductForm + a {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the Cancel button */
+  #newProductForm button.btn-danger {
+    margin-left: 5px;
+  }
+  
+  /* Hide the input fields initially */
+  #newProductForm input,
+  #newProductForm textarea {
+    display: none;
+  }
+  
+  /* Show the input fields when in edit mode */
+  #newProductForm.editing input,
+  #newProductForm.editing textarea {
+    display: block;
+  }
+  
+  /* Style the Update button */
+  #newProductForm.editing button.btn-success {
+    display: inline-block;
+  }
+  
+  /* Hide the Update button when not in edit mode */
+  #newProductForm:not(.editing) button.btn-success {
+    display: none;
+  }
+  

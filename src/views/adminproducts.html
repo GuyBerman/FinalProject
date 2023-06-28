@@ -8,9 +8,26 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="/adminproducts.css" />
   </head>
   <body>
-    <a href="/adminusers" type="submit" class="btn btn-primary">users</a>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+    viewBox="0 0 16 16">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+  </svg>
+  <nav class="navbar bg-brown">
+    <div class="container">
+      <a class="navbar-brand" href="/home">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="#home" />
+        </svg>
+      </a>
+      <button href="/adminusers" class="navbar-btn btn bg">Users</button>
+    </div>
+
+  </nav>
     <div class="container">
       <h1>Product Listing</h1>
       <div id="productCount"></div>
@@ -115,6 +132,11 @@
           alert("Please fill in all the fields.");
           return;
         }
+        if (name !== "" || description !== "" || price !== "" || stock !== "") {
+          alert("Please fill in all the fields.");
+          return;
+        }
+       
 
         if (isNaN(stock) || isNaN(parseFloat(price))) {
           alert("Please enter a valid number for Stock and Price fields.");

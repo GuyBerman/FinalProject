@@ -24,6 +24,9 @@ app.use(updateCartRouter);
 app.use(getUserRouter);
 app.use(transactionRouter);
 
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/home.html"));
+});
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/home.html"));
 });
@@ -32,6 +35,9 @@ app.get("/adminusers", (req, res) => {
 });
 app.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/register.html"));
+});
+app.get("/brunches", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/brunches.html"));
 });
 app.get("/signin", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/login.html"));

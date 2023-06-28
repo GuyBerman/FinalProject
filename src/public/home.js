@@ -50,8 +50,8 @@ const fetchimages = async () => {
   const products = await res.json();
   const images = products.map((item) => {
     const image = document.createElement("img");
-    image.style.width = "200px";
-    image.style.height = "150px";
+    image.style.width = "150px";
+    image.style.height = "200px";
     image.className = "card-img-top";
     image.setAttribute("src", item.image);
     return { image, name: item.name, price: item.price };
@@ -62,12 +62,14 @@ const fetchimages = async () => {
     const price = document.createElement("h1");
     name.style.fontSize = "25px";
     name.innerHTML = image.name;
-    name.style.fontFamily = "Monospace";
+    name.style.fontFamily = "Roboto";
     price.innerHTML = "Price:" + `${image.price}`;
     price.style.fontSize = "25px";
-    price.style.fontFamily = "Monospace";
+    price.style.fontFamily = "Roboto";
     const buy = document.createElement("button");
     buy.id = image.name;
+    buy.style.background="white";
+    buy.style.fontFamily = "Roboto";
     buy.innerHTML = "Buy";
 
     // Add event listener to the Buy button
