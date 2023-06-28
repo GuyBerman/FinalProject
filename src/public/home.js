@@ -1,6 +1,9 @@
 const clientname = document.getElementById("username");
 const settings = document.getElementById("settings");
 const admin = document.getElementById("adminbtn");
+const signout = document.getElementById("signout");
+const login = document.getElementById("login");
+const register = document.getElementById("register");
 let storage;
 
 if (localStorage.getItem("user") !== null) {
@@ -10,9 +13,12 @@ if (!storage) {
   clientname.innerHTML = "";
   settings.className = "disabled";
   admin.className = "disabled";
+  signout.className = "disabled";
 } else {
   clientname.innerHTML = ` Welcome, ${storage.firstname}`;
   settings.className = "active nav-link";
+  register.className = "disabled";
+  login.className = "disabled";
 
   if (storage.admin) {
     admin.className = "active nav-link";
