@@ -138,5 +138,5 @@ document.getElementById("search-btn").addEventListener("click", async () => {
     return;
   }
   localStorage.setItem("productArrived", JSON.stringify(data.error));
-  location.href = "/";
+  location.href = "/";
 });
