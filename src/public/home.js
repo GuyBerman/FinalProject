@@ -24,33 +24,32 @@ if (!storage) {
     admin.className = "active nav-link";
   }
 }
+ 
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var searchButton = document.getElementById('search-button');
-    searchButton.addEventListener('click', function () {
-      var searchInput = document.getElementById('search-input');
-      var searchText = searchInput.value.trim();
-      if (searchText !== '') {
-        // Perform search operation here
-        alert('Searching for: ' + searchText);
-      }
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  var searchButton = document.getElementById('search-button');
+  searchButton.addEventListener('click', function () {
+    var searchInput = document.getElementById('search-input');
+    var searchText = searchInput.value.trim();
+    if (searchText !== '') {
+      // Perform search operation here
+      alert('Searching for: ' + searchText);
+    }
   });
+});
 
-
-  document.addEventListener('DOMContentLoaded', function () {
-    fetchimages();
-    var searchButton = document.getElementById('search-button');
-    searchButton.addEventListener('click', function () {
-      var searchInput = document.getElementById('search-input');
-      var searchText = searchInput.value.trim();
-      if (searchText !== '') {
-        // Perform search operation here
-        alert('Searching for: ' + searchText);
-      }
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  fetchimages();
+  var searchButton = document.getElementById('search-button');
+  searchButton.addEventListener('click', function () {
+    var searchInput = document.getElementById('search-input');
+    var searchText = searchInput.value.trim();
+    if (searchText !== '') {
+      // Perform search operation here
+      alert('Searching for: ' + searchText);
+    }
   });
-
+});
 
 const fetchimages = async () => {
   const res = await fetch("/api/getProducts");
@@ -118,3 +117,26 @@ const addToCart = async (productName, price) => {
 
 fetchimages();
 
+
+document.getElementById("search-btn").addEventListener("click", async () => {
+  const searchInput = document.getElementById("search-input").value;
+
+
+  const res = await fetch("/api/SearchProduct", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: searchInput,
+    }),
+  });
+
+  const data = await res.json();
+  if (!data.status) {
+    alert(data.error);
+    return;
+  }
+  localStorage.setItem("productArrived", JSON.stringify(data.error));
+  location.href = "/";
+});
