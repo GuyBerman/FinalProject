@@ -14,8 +14,6 @@ router.post("/api/SearchProduct", async (req, res) => {
   res.send({ status: true, error: user });
 });
 
-
-
 router.get('/', async (req, res) => {
   try {
     const searchTerm = req.query.term;
