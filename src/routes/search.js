@@ -1,7 +1,5 @@
-const express = require("express");
+const router = require("express");
 const { Product } = require("../models/product");
-
-const router = express.Router();
 
 router.get("/api/search", async (req, res) => {
   const products = await Product.find({});
