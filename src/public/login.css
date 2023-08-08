@@ -46,8 +46,6 @@
 
 
 body {
-  background: #E4C7B8;
-  background: rgb(228, 199, 184);
   background: linear-gradient(90deg, #efebe5 0%, #aca8a4);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -55,7 +55,7 @@
             <a href="/admin2" class="disabled nav-link" id="adminbtn">Admin</a>
           </li>
           <li class="nav-item">
-            <a href="/userinfo" class="disabled nav-link" id="settings">Settings</a>
+            <a href="/userinfo" class="disabled nav-link" id="settings">User Info</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto me-auto">
@@ -100,14 +100,19 @@
   </form>
 </div>
 
+<!-- ... (your existing HTML code) ... -->
+
 <div id="filtering">
-  <button class="btn active" id="btn-all">Show all</button>
-  <button class="btn" id="btn-capsules">Capsules</button>
-  <button class="btn" id="btn-machines">Machines</button>
-  <button class="btn" id="btn-accessories">Accessories</button>
-  <button class="btn" id="btn-nespresso">Nespresso</button>
-  <button class="btn" id="btn-alit">Allit</button>
+  <button class="btn active" id="btn-all" data-type="all" data-brand="all">Show all</button>
+  <button class="btn" id="btn-capsules" data-type="Capsules" data-brand="all">Capsules</button>
+  <button class="btn" id="btn-machines" data-type="Machines" data-brand="all">Machines</button>
+  <button class="btn" id="btn-accessories" data-type="Accessories" data-brand="all">Accessories</button>
+  <button class="btn" id="btn-nespresso" data-type="Nespresso" data-brand="all">Nespresso</button>
+  <button class="btn" id="btn-alit" data-type="Alit" data-brand="all">Alit</button>
+  <button class="btn" id="btn-show-none" data-type="none" data-brand="none">Show none</button>
 </div>
+
+<!-- ... (rest of your HTML code) ... -->
 
 <section>
   <div>
