@@ -135,7 +135,6 @@ const fetchimages = async () => {
     document.getElementById("images").appendChild(col);
   });
 };
-fetchimages();
 const userId = storage._id;
 const addToCart = async (productName, price) => {
   try {
