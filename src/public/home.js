@@ -180,17 +180,22 @@ const sortingSelect = document.getElementById('sortingSelect');
 
 // Add event listener to the sorting select
 sortingSelect.addEventListener('change', async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  showAllFilter.classList.add("active");
   console.log('Sorting option changed:', sortingSelect.value);
-
   const selectedSortOption = sortingSelect.value;
+  const response = await fetch("/api/getProducts");
+  const products = await response.json();
 
   // Sort the products based on the selected option
-  if (selectedSortOption === 'new_to_old') {
+  if (selectedSortOption === "Newest to oldest") {
     displaySearchResults(products);
-  } else if (selectedSortOption === 'low_to_high') {
+  } 
+  else if (selectedSortOption === 'Price low to high') {
     const sortedProducts = products.slice().sort((a, b) => a.price - b.price);
     displaySearchResults(sortedProducts);
-  } else if (selectedSortOption === 'high_to_low') {
+  } 
+  else if (selectedSortOption === 'Price high to low') {
     const sortedProducts = products.slice().sort((a, b) => b.price - a.price);
     displaySearchResults(sortedProducts);
   }
