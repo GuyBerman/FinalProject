@@ -13,6 +13,7 @@ const { transactionRouter } = require("./routes/transaction");
 const deleteProductFromCartRoute = require("./routes/deleteProductFromCart");
 
 // Mount the deleteProductFromCart route
+const { searchRouter } = require("./routes/search");
 
 const app = express();
 
@@ -28,7 +29,11 @@ app.use(updateCartRouter);
 app.use(getUserRouter);
 app.use(transactionRouter);
 app.use(deleteProductFromCartRoute);
+app.use(searchRouter);
 
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/home.html"));
+});
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/home.html"));
 });
@@ -37,6 +42,9 @@ app.get("/adminusers", (req, res) => {
 });
 app.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/register.html"));
+});
+app.get("/brunches", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/brunches.html"));
 });
 app.get("/signin", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/login.html"));

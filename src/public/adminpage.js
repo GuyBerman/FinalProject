@@ -17,6 +17,7 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
   });
 });
 const newname = document.getElementById("newprod");
+const producttype = document.getElementById("productType")
 const newprice = document.getElementById("newprice");
 const newimg = document.getElementById("newimg");
 const newqua = document.getElementById("newqua");
@@ -46,6 +47,7 @@ document.getElementById("createbtn").addEventListener("click", async () => {
     }),
   });
   newname.value = "";
+  producttype.value="";
   newprice.value = "";
   newimg.value = "";
   newqua.value = "";

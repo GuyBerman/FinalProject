@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+  <title >Coffee Shop Branches</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/brunches.css">
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+  viewBox="0 0 16 16">
+  <symbol id="home" viewBox="0 0 16 16">
+    <path
+      d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+</svg>
+<nav class="navbar bg-brown">
+  <div class="container">
+    <a class="navbar-brand" href="/home">
+      <svg class="bi" width="24" height="24">
+        <use xlink:href="#home" />
+      </svg>
+    </a>
+  </div>
+</nav>
+  <h1>Coffee Shop Branches</h1>
+  <div class="branch-container">
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Cafe Cafe</h3>
+        <p>Location: Address 1</p>
+        <p>Phone:  0523528571</p>
+        <p>Hours: Monday-Friday 9am-6pm</p>
+      </div>
+      <div class="map-container" id="map1"></div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Greg</h3>
+        <p>Location: Address 2</p>
+        <p>Phone:  0523528572</p>
+        <p>Hours: Monday-Friday 8am-7pm</p>
+      </div>
+      <div class="map-container" id="map2"></div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Starb</h3>
+        <p>Location: Address 3</p>
+        <p>Phone:  0523528574</p>
+        <p>Hours: Monday-Friday 7am-8pm</p>
+      </div>
+      <div class="map-container" id="map3"></div>
+    </div>
+
+    <div class="branch">
+      <div class="branch-details">
+        <h3>Landwer</h3>
+        <p>Location: Address 4</p>
+        <p>Phone: 0523528576</p>
+        <p>Hours: Monday-Friday 8am-5pm</p>
+      </div>
+      <div class="map-container" id="map4"></div>
+    </div>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3xsqtuuzminYxX_s9sqzILXU2Wv5OrRo"></script>
+  <script>
+    function initMap() {
+ // Branch 1 - Jerusalem
+ var map1 = new google.maps.Map(document.getElementById('map1'), {
+        center: { lat: 31.7683, lng: 35.2137 },
+        zoom: 12
+      });
+      var marker1 = new google.maps.Marker({
+        position: { lat: 31.7683, lng: 35.2137 },
+        map: map1
+      });
+
+      // Branch 2 - Tel Aviv
+      var map2 = new google.maps.Map(document.getElementById('map2'), {
+        center: { lat: 32.0853, lng: 34.7818 },
+        zoom: 12
+      });
+      var marker2 = new google.maps.Marker({
+        position: { lat: 32.0853, lng: 34.7818 },
+        map: map2
+      });
+
+      // Branch 3 - Ashdod
+      var map3 = new google.maps.Map(document.getElementById('map3'), {
+        center: { lat: 31.8079, lng: 34.6553 },
+        zoom: 12
+      });
+      var marker3 = new google.maps.Marker({
+        position: { lat: 31.8079, lng: 34.6553 },
+        map: map3
+      });
+
+      // Branch 4 - Netanya
+      var map4 = new google.maps.Map(document.getElementById('map4'), {
+        center: { lat: 32.3329, lng: 34.8599 },
+        zoom: 12
+      });
+      var marker4 = new google.maps.Marker({
+        position: { lat: 32.3329, lng: 34.8599 },
+        map: map4
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3xsqtuuzminYxX_s9sqzILXU2Wv5OrRo&callback=initMap"></script>
+</body>
+</html>
