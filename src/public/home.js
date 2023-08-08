@@ -25,29 +25,68 @@ if (!storage) {
   }
 }
 
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-btn');
+
+searchButton.addEventListener('click', async (event) => {
+  event.preventDefault(); // Prevent form submission
+  const searchTerm = searchInput.value.toLowerCase();
+  try {
+    const response = await fetch(`/api/search?q=${searchTerm}`);
+    const searchResults = await response.json();
+    displaySearchResults(searchResults);
+  } catch (error) {
+    console.error('Error searching products:', error);
+  }
+});
+
+const displaySearchResults = (searchResults) => {
+  const imagesContainer = document.getElementById("images");
+  imagesContainer.innerHTML = ""; // Clear previous content
+
+  searchResults.forEach((item) => {
+    const image = document.createElement("img");
+    image.style.width = "150px";
+    image.style.height = "200px";
+    image.className = "card-img-top";
+    image.setAttribute("src", item.image);
+
+    const name = document.createElement("h1");
+    name.style.fontSize = "25px";
+    name.innerHTML = item.name;
+    name.style.fontFamily = "Roboto";
+
+    const price = document.createElement("h1");
+    price.style.fontSize = "25px";
+    price.innerHTML = "Price: " + item.price;
+    price.style.fontFamily = "Roboto";
+
+    const buy = document.createElement("button");
+    buy.id = item.name;
+    buy.style.background = "white";
+    buy.style.fontFamily = "Roboto";
+    buy.innerHTML = "Buy";
+
+    // Add event listener to the Buy button
+    buy.addEventListener("click", () => {
+      addToCart(buy.id, item.price);
+    });
+
+    const col = document.createElement("div");
+    col.className = "col col-3";
+    col.appendChild(image);
+    col.appendChild(name);
+    col.appendChild(price);
+    col.appendChild(buy);
+    col.style.width = "300px";
+
+    imagesContainer.appendChild(col);
+  });
+};
+
+
 document.addEventListener('DOMContentLoaded', function () {
   fetchimages();
-
-  document.getElementById("search-btn").addEventListener("click", async () => {
-    const searchInput = document.getElementById("search-input").value;
-    const response = await fetch("/api/search",{
-      method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({
-         name: searchInput,
-       }),
-     });
-
-     const product = await response.json();
-     if (!product.status) {
-      alert(product.error);
-      return;
-    }
-    localStorage.setItem("productSearch", JSON.stringify(product.error));
-    location.reload();
-  });  
 });
 
 
