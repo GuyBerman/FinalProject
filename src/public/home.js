@@ -27,17 +27,21 @@ if (!storage) {
 
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-btn');
+let typingTimeout;
 
-searchButton.addEventListener('click', async (event) => {
+searchInput.addEventListener('input', async (event) => {
   event.preventDefault(); // Prevent form submission
+  clearTimeout(typingTimeout);
   const searchTerm = searchInput.value.toLowerCase();
-  try {
-    const response = await fetch(`/api/search?q=${searchTerm}`);
-    const searchResults = await response.json();
-    displaySearchResults(searchResults);
-  } catch (error) {
-    console.error('Error searching products:', error);
-  }
+  typingTimeout = setTimeout(async () => {
+    try {
+      const response = await fetch(`/api/search?q=${searchTerm}`);
+      const searchResults = await response.json();
+      displaySearchResults(searchResults);
+    } catch (error) {
+      console.error('Error searching products:', error);
+    }
+  }, 100); // Delay in milliseconds, adjust as needed
 });
 
 const displaySearchResults = (searchResults) => {
