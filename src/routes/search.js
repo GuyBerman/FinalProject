@@ -11,7 +11,7 @@ router.post("/api/search", async (req, res) => {
   if (!product) {
     return res.send({ status: false, error: "No product found" });
   }
-  res.send(product);
+  return res.send(product);
 });
 
 exports.searchRouter = router;
