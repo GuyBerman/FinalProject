@@ -4,20 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/admin.css" />
   </head>
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+    viewBox="0 0 16 16">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+  </svg>
+  <nav class="navbar bg-brown">
+    <div class="container">
+      <a class="navbar-brand" href="/home">
+        <svg class="bi" width="24" height="24">
+          <use xlink:href="#home" />
+        </svg>
+      </a>
+    </div>
+  </nav>
     <div>
       <input id="prodname" placeholder="name of product" />
-      <input id="prodprice" placeholder="enter new price" />
+      enter new price:
+      <input type="number" id="prodprice"  min="1" max="50" step="1" value="20">
       <input id="prodqua" placeholder="enter new quantity" />
       <button id="updatebtn">Update</button>
     </div>
     <div>
       <input id="newprod" placeholder="name of product" />
-      <input id="newprice" placeholder="enter new price" />
+      <select name="productType" id="productType">
+        <option value="" disabled selected>Select a product type</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Capsules">Capsules</option>
+        <option value="Machines">Machines</option>
+      </select>
+      <select name="Brand" id="Brand">
+        <option value="" disabled selected>Select the product brand</option>
+        <option value="Nespresso">Nespresso</option>
+        <option value="Alit">Alit</option>
+      </select>
+      enter the price of the product:
+      <input type="number" id="newprice"  min="1" max="50" step="1" value="20">
       <input type="file" id="newimg" />
-      <input id="newqua" placeholder="quantity" />
-      <button id="createbtn">CREATE</button>
+      enter quantity:
+      <input type="number" id="newqua"  min="1" max="200" step="1" value="30">
+      <button id="createbtn">CREATE PRODUCT</button>
     </div>
     <script src="/adminpage.js"></script>
   </body>

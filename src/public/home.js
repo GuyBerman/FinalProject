@@ -1,6 +1,9 @@
 const clientname = document.getElementById("username");
 const settings = document.getElementById("settings");
 const admin = document.getElementById("adminbtn");
+const signout = document.getElementById("signout");
+const login = document.getElementById("login");
+const register = document.getElementById("register");
 let storage;
 
 if (localStorage.getItem("user") !== null) {
@@ -10,9 +13,12 @@ if (!storage) {
   clientname.innerHTML = "";
   settings.className = "disabled";
   admin.className = "disabled";
+  signout.className = "disabled";
 } else {
   clientname.innerHTML = ` Welcome, ${storage.firstname}`;
   settings.className = "active nav-link";
+  register.className = "disabled";
+  login.className = "disabled";
 
   if (storage.admin) {
     admin.className = "active nav-link";
@@ -48,8 +54,8 @@ const fetchimages = async () => {
   const products = await res.json();
   const images = products.map((item) => {
     const image = document.createElement("img");
-    image.style.width = "200px";
-    image.style.height = "150px";
+    image.style.width = "150px";
+    image.style.height = "200px";
     image.className = "card-img-top";
     image.setAttribute("src", item.image);
     return { image, name: item.name, price: item.price };
@@ -60,13 +66,15 @@ const fetchimages = async () => {
     const price = document.createElement("h1");
     name.style.fontSize = "25px";
     name.innerHTML = image.name;
-    name.style.fontFamily = "Monospace";
+    name.style.fontFamily = "Roboto";
     price.innerHTML = "Price:" + `${image.price}`;
     price.style.fontSize = "25px";
-    price.style.fontFamily = "Monospace";
+    price.style.fontFamily = "Roboto";
     const buy = document.createElement("button");
     buy.id = image.name;
     buy.className = "btn btn-success";
+    buy.style.background="white";
+    buy.style.fontFamily = "Roboto";
     buy.innerHTML = "Buy";
 
     // Add event listener to the Buy button
@@ -83,7 +91,7 @@ const fetchimages = async () => {
     document.getElementById("images").appendChild(col);
   });
 };
-
+fetchimages();
 const userId = storage._id;
 const addToCart = async (productName, price) => {
   try {
@@ -106,4 +114,4 @@ const addToCart = async (productName, price) => {
   }
 };
 
-fetchimages();
+
