@@ -17,9 +17,11 @@ const productScheme = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  productype:{
+  producttype:{
     type: String,
-    required: true,
+  },
+  producbrand:{
+    type: String,
   },
 });
 

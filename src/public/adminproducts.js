@@ -22,8 +22,6 @@ const fetchimages = async () => {
     const imageCell = document.createElement("td");
     imageCell.appendChild(image.image);
     tr.appendChild(imageCell);
-  
-
 
     const name = document.createElement("td");
     name.style.paddingLeft = "130px";
