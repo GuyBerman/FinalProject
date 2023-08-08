@@ -20,7 +20,7 @@ const productScheme = new mongoose.Schema({
   producttype:{
     type: String,
   },
-  producbrand:{
+  productbrand:{
     type: String,
   },
 });
