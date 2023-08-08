@@ -30,7 +30,7 @@
 body {
   background: #E4C7B8;
   background: rgb(228, 199, 184);
-  background: linear-gradient(90deg, rgb(226, 218, 204) 0%, rgb(208, 191, 176) 50%);
+  background: linear-gradient(90deg, #efebe5 0%, #aca8a4);
 }
 h1 {
   text-align: center;
