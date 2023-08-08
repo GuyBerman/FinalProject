@@ -17,7 +17,11 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
   });
 });
 const newname = document.getElementById("newprod");
-const producttype = document.getElementById("productType").value;
+const producttype = document.getElementById("productType");
+let myoption;
+producttype.addEventListener("change", (e) => {
+  myoption = e.target.value;
+});
 const newprice = document.getElementById("newprice");
 const newimg = document.getElementById("newimg");
 const newqua = document.getElementById("newqua");
@@ -44,13 +48,11 @@ document.getElementById("createbtn").addEventListener("click", async () => {
       price: newprice.value,
       image: `/img/${filename.fileName}`,
       quantity: newqua.value,
-      producttype:producttype,
+      producttype: myoption,
     }),
   });
-
-
   newname.value = "";
-  producttype.value="";
+  producttype.value = "";
   newprice.value = "";
   newimg.value = "";
   newqua.value = "";
