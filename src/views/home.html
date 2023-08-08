@@ -108,13 +108,14 @@
   <button class="btn" id="btn-accessories" data-type="Accessories" data-brand="all">Accessories</button>
   <button class="btn" id="btn-nespresso" data-type="Nespresso" data-brand="all">Nespresso</button>
   <button class="btn" id="btn-elite" data-type="elite" data-brand="all">Elite</button>
-  <div id="sort-item"> <select>
-    <option value="" disabled selected>Our newest items</option>
-    <option>Price low to high</option>
-    <option>Price high to low</option>
-  </select></div>
-</div>
-
+  <div id="sort-item">
+    <select id="sortingSelect">
+      <option selected id="new_to_old">What's new</option>
+      <option id="low_to_high">Price low to high</option>
+      <option id="high_to_low">Price high to low</option>
+    </select>
+  </div>
+  
 <!-- ... (rest of your HTML code) ... -->
 
 <section>

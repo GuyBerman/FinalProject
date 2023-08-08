@@ -43,7 +43,7 @@ searchInput.addEventListener('input', async (event) => {
     } catch (error) {
       console.error('Error searching products:', error);
     }
-  }, 100); // Delay in milliseconds, adjust as needed
+  }, 100); // Delay in milliseconds
 });
 
 const showAllFilter = document.getElementById('btn-all');
@@ -65,7 +65,6 @@ showAllFilter.addEventListener("click", async () => {
     console.error('Error fetching products:', error);
   }
 });
-
 
 capsulesFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
@@ -175,6 +174,27 @@ const displaySearchResults = (searchResults) => {
     imagesContainer.appendChild(col);
   });
 };
+
+
+const sortingSelect = document.getElementById('sortingSelect');
+
+// Add event listener to the sorting select
+sortingSelect.addEventListener('change', async () => {
+  console.log('Sorting option changed:', sortingSelect.value);
+
+  const selectedSortOption = sortingSelect.value;
+
+  // Sort the products based on the selected option
+  if (selectedSortOption === 'new_to_old') {
+    displaySearchResults(products);
+  } else if (selectedSortOption === 'low_to_high') {
+    const sortedProducts = products.slice().sort((a, b) => a.price - b.price);
+    displaySearchResults(sortedProducts);
+  } else if (selectedSortOption === 'high_to_low') {
+    const sortedProducts = products.slice().sort((a, b) => b.price - a.price);
+    displaySearchResults(sortedProducts);
+  }
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {
