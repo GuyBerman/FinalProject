@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchimages();
 });
 
-
 const fetchimages = async () => {
   const res = await fetch("/api/getProducts");
   const products = await res.json();
@@ -117,6 +116,7 @@ const fetchimages = async () => {
     price.style.fontFamily = "Roboto";
     const buy = document.createElement("button");
     buy.id = image.name;
+    buy.className = "btn btn-success";
     buy.style.background="white";
     buy.style.fontFamily = "Roboto";
     buy.innerHTML = "Buy";
@@ -135,7 +135,7 @@ const fetchimages = async () => {
     document.getElementById("images").appendChild(col);
   });
 };
-
+fetchimages();
 const userId = storage._id;
 const addToCart = async (productName, price) => {
   try {

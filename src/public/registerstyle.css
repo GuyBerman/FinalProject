@@ -53,11 +53,7 @@
 body {
 Background: #E4C7B8;
 Background: rgb(228, 199, 184);
-Background: linear-gradient(
-90deg,
-rgb(226, 218, 204) 0%,
-rgb(208, 191, 176) 50%
-);
+background: linear-gradient(90deg, #efebe5 0%, #aca8a4);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

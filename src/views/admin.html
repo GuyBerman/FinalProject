@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/admin.css" />
+    <script>
+      function handleSelection() {
+          var selectElement = document.getElementById("productType");
+          var selectedValue = selectElement.value;
+          
+          if (selectedValue) {
+              alert("You selected: " + selectedValue);
+          } else {
+              alert("Please select a product type.");
+          }
+      }
+  </script>
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
@@ -24,7 +36,8 @@
   </nav>
     <div>
       <input id="prodname" placeholder="name of product" />
-      <input id="prodprice" placeholder="enter new price" />
+      enter new price:
+      <input type="number" id="prodprice"  min="1" max="50" step="1" value="20">
       <input id="prodqua" placeholder="enter new quantity" />
       <button id="updatebtn">Update</button>
     </div>
@@ -36,9 +49,16 @@
         <option value="Capsules">Capsules</option>
         <option value="Machines">Machines</option>
       </select>
-      <input id="newprice" placeholder="enter new price" />
+      <select name="Brand" id="Brand">
+        <option value="" disabled selected>Select the product brand</option>
+        <option value="Nespresso">Nespresso</option>
+        <option value="Alit">Alit</option>
+      </select>
+      enter the price of the product:
+      <input type="number" id="newprice"  min="1" max="50" step="1" value="20">
       <input type="file" id="newimg" />
-      <input id="newqua" placeholder="quantity" />
+      enter quantity:
+      <input type="number" id="newqua"  min="1" max="200" step="1" value="30">
       <button id="createbtn">CREATE PRODUCT</button>
     </div>
     <script src="/adminpage.js"></script>
