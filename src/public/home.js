@@ -25,11 +25,13 @@ if (!storage) {
   }
 }
 
+const filterButtons = document.querySelectorAll("#filtering button");
 const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-btn');
 let typingTimeout;
 
 searchInput.addEventListener('input', async (event) => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  showAllFilter.classList.add("active");
   event.preventDefault(); // Prevent form submission
   clearTimeout(typingTimeout);
   const searchTerm = searchInput.value.toLowerCase();
@@ -42,6 +44,92 @@ searchInput.addEventListener('input', async (event) => {
       console.error('Error searching products:', error);
     }
   }, 100); // Delay in milliseconds, adjust as needed
+});
+
+const showAllFilter = document.getElementById('btn-all');
+const capsulesFilter = document.getElementById('btn-capsules');
+const accessoriesFilter = document.getElementById('btn-accessories');
+const machinesFilter = document.getElementById('btn-machines');
+const nespresspFilter = document.getElementById('btn-nespresso');
+const eliteFilter = document.getElementById('btn-elite');
+
+
+showAllFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  showAllFilter.classList.add("active");
+  try {
+    const response = await fetch("/api/getProducts");
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+
+capsulesFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  capsulesFilter.classList.add("active");
+  const selectedType = "Capsules"; // Replace with the desired type
+  try {
+    const response = await fetch(`/api/getProducts?type=${selectedType}`);
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+accessoriesFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  accessoriesFilter.classList.add("active");
+  const selectedType = "Accessories"; // Replace with the desired type
+  try {
+    const response = await fetch(`/api/getProducts?type=${selectedType}`);
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+machinesFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  machinesFilter.classList.add("active");
+  const selectedType = "Machines"; // Replace with the desired type
+  try {
+    const response = await fetch(`/api/getProducts?type=${selectedType}`);
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+nespresspFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  nespresspFilter.classList.add("active");
+  const selectedBrand = "Nespresso"; // Replace with the desired type
+  try {
+    const response = await fetch(`/api/getProducts?brand=${selectedBrand}`);
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+eliteFilter.addEventListener("click", async () => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  eliteFilter.classList.add("active");
+  const selectedBrand = "Elite"; // Replace with the desired type
+  try {
+    const response = await fetch(`/api/getProducts?brand=${selectedBrand}`);
+    const products = await response.json();
+    displaySearchResults(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
 });
 
 const displaySearchResults = (searchResults) => {
@@ -117,7 +205,7 @@ const fetchimages = async () => {
     const buy = document.createElement("button");
     buy.id = image.name;
     buy.className = "btn btn-success";
-    buy.style.background="white";
+    buy.style.background="black";
     buy.style.fontFamily = "Roboto";
     buy.innerHTML = "Buy";
 
