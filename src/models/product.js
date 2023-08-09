@@ -23,6 +23,11 @@ const productScheme = new mongoose.Schema({
   productbrand:{
     type: String,
   },
+  counterSell:{
+    type: Number,
+    default: 0,
+  },
+
 });
 
 const Product = mongoose.model("product", productScheme);
