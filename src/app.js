@@ -9,6 +9,10 @@ const { deleteRouter } = require("./routes/delete");
 const { updateCartRouter } = require("./routes/cart_update");
 const { getUserRouter } = require("./routes/getuser");
 const { transactionRouter } = require("./routes/transaction");
+// Import the deleteProductFromCart route
+const deleteProductFromCartRoute = require("./routes/deleteProductFromCart");
+
+// Mount the deleteProductFromCart route
 const { searchRouter } = require("./routes/search");
 
 const app = express();
@@ -24,6 +28,7 @@ app.use(deleteRouter);
 app.use(updateCartRouter);
 app.use(getUserRouter);
 app.use(transactionRouter);
+app.use(deleteProductFromCartRoute);
 app.use(searchRouter);
 
 app.get("/home", (req, res) => {

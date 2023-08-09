@@ -42,14 +42,6 @@ const fetchimages = async () => {
 
     const del = document.createElement("td");
     del.style.paddingLeft = "190px";
-    const deleteprod = document.createElement("button");
-    deleteprod.style.color = "white";
-    deleteprod.style.backgroundColor = "red";
-    deleteprod.innerHTML = "Delete";
-    deleteprod.id = "deleteBtn";
-    deleteprod.name = user.name;
-    del.appendChild(deleteprod);
-    tr.appendChild(del);
 
     table.appendChild(tr); // Append the table row to the table
   });

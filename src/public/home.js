@@ -25,6 +25,7 @@ if (!storage) {
   }
 }
 
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', function () {
   fetchimages();
 
@@ -50,6 +51,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });  
 });
 
+=======
+document.addEventListener("DOMContentLoaded", function () {
+  var searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", function () {
+    var searchInput = document.getElementById("search-input");
+    var searchText = searchInput.value.trim();
+    if (searchText !== "") {
+      // Perform search operation here
+      alert("Searching for: " + searchText);
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", function () {
+    var searchInput = document.getElementById("search-input");
+    var searchText = searchInput.value.trim();
+    if (searchText !== "") {
+      // Perform search operation here
+      alert("Searching for: " + searchText);
+    }
+  });
+});
+>>>>>>> 9638b89ed404b28d1cd352b199ea1dd1ddcfe5ba
 
 const fetchimages = async () => {
   const res = await fetch("/api/getProducts");
@@ -74,8 +100,6 @@ const fetchimages = async () => {
     price.style.fontFamily = "Roboto";
     const buy = document.createElement("button");
     buy.id = image.name;
-    buy.style.background="white";
-    buy.style.fontFamily = "Roboto";
     buy.innerHTML = "Buy";
 
     // Add event listener to the Buy button
@@ -113,4 +137,10 @@ const addToCart = async (productName, price) => {
   } catch (error) {
     console.error(error);
   }
+<<<<<<< HEAD
 };
+=======
+};
+
+fetchimages();
+>>>>>>> 9638b89ed404b28d1cd352b199ea1dd1ddcfe5ba
