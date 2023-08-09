@@ -120,4 +120,6 @@ margin-left: 100px;;
   padding: 20px;
   display: flex;
   align-items: center;
+  width: 100%; 
+  box-sizing: border-box; 
 }

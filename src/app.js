@@ -58,6 +58,9 @@ app.get("/admin2", (req, res) => {
 app.get("/userinfo", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/userinfo.html"));
 });
+app.get("/graphs", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/graphs.html"));
+});
 
 app.get("/passchange", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/passchange.html"));

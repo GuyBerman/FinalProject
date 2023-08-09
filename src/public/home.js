@@ -1,6 +1,7 @@
 const clientname = document.getElementById("username");
 const settings = document.getElementById("settings");
 const admin = document.getElementById("adminbtn");
+const graphs = document.getElementById("graphbtn");
 const signout = document.getElementById("signout");
 const login = document.getElementById("login");
 const register = document.getElementById("register");
