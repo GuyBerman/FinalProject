@@ -23,6 +23,7 @@ const productScheme = new mongoose.Schema({
   productbrand:{
     type: String,
   },
+  
 });
 
 const Product = mongoose.model("product", productScheme);
