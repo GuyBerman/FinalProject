@@ -155,10 +155,11 @@ const displaySearchResults = (searchResults) => {
 
     const buy = document.createElement("button");
     buy.id = item.name;
+    buy.className = "btn ";
     buy.style.background = "efebe5";
     buy.style.color="darkgrey";
     buy.style.fontFamily = "Roboto";
-    buy.innerHTML = "Buy";
+    buy.innerHTML = "Add To Cart";
     buy.style.fontWeight = "bold";
 
     // Add event listener to the Buy button
@@ -238,7 +239,7 @@ const fetchimages = async () => {
     buy.style.color="darkgrey";
     buy.style.fontWeight = "bold";
     buy.style.fontFamily = "Roboto";
-    buy.innerHTML = "Buy";
+    buy.innerHTML = "Add To Cart";
 
     // Add event listener to the Buy button
     buy.addEventListener("click", () => {
