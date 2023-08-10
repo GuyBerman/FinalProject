@@ -15,6 +15,7 @@ if (!storage) {
   settings.className = "disabled";
   admin.className = "disabled";
   signout.className = "disabled";
+  graphs.className= "disabled";
 } else {
   clientname.innerHTML = ` Welcome, ${storage.firstname}`;
   settings.className = "active nav-link";
@@ -23,6 +24,8 @@ if (!storage) {
 
   if (storage.admin) {
     admin.className = "active nav-link";
+
+    graphs.className= "active nav-link";
   }
 }
 

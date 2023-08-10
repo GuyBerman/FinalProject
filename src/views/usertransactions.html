@@ -1,30 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Transactions</title>
     <style>
-      table {
-        width: 100%;
-      }
-      th,
-      td {
-        padding: 8px;
-        text-align: left;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #9a9792;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #efebe5;
+        }
+        .nav-item {
+            margin-left: 20px;
+        }
+
+        .nav-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .nav {
+            background-color: transparent;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+    viewBox="0 0 16 16">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+  </svg>
+  <nav class="nav">
+    <div class="navbar-brand">
+        <a href="/home">
+            <svg class="bi" width="24" height="24">
+                <use xlink:href="#home" />
+            </svg>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="/userinfo" class="nav-link" id="settings">Go Back</a>
+    </div>
+</nav>
     <table id="userTable">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
     <script src="/usertransactions.js"></script>
-  </body>
+</body>
 </html>

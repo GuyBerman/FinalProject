@@ -5,20 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <link
-      href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+  <style>
+    body {
+            background-color: #efebe5;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(98, 97, 97, 0.2);
+            width: 300px;
+            height: 100px;
+            margin: 20px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .passwordForm{
+          width: 150px;
+        }
+        .nav-item {
+            margin-left: 20px;
+        }
 
+        .nav-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .nav {
+            background-color: transparent;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+        }
+  </style>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+    viewBox="0 0 16 16">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+  </svg>
+  <nav class="nav">
+    <div class="navbar-brand">
+        <a href="/home">
+            <svg class="bi" width="24" height="24">
+                <use xlink:href="#home" />
+            </svg>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="/userinfo" class="nav-link" id="settings">Go Back</a>
+    </div>
+</nav>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Change Password</h1>
+          <h2>Change Your Password</h2>
         </div>
       </div>
       <div class="row">
@@ -29,16 +85,14 @@
               class="input-lg form-control"
               name="password1"
               id="password1"
-              placeholder="New Password"
+              placeholder="Enter Your New Password"
               autocomplete="off"
             />
 
-            <input id="passbtn" type="submit" value="Change Password" />
+            <input id="passbtn" type="submit" value="Change" />
           </form>
         </div>
-        <!--/col-sm-6-->
       </div>
-      <!--/row-->
     </div>
   </body>
   <script src="/passchange.js"></script>

@@ -31,7 +31,7 @@
     inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
 }
 #sort-item{
-margin-left: 100px;;
+margin-left: 300px;;
 
 }
 .b-example-vr {
@@ -107,6 +107,7 @@ margin-left: 100px;;
   background-color: #f0f0f0; /* Change background color on hover */
 }
 
+
 #sort-item {
   display: flex;
   align-items: center;
@@ -118,6 +119,7 @@ margin-left: 100px;;
   border-radius: 5px;
   border: 1px solid #ccc;
   transition: border-color 0.3s ease-in-out; /* Transition */
+  
 }
 
 /* Apply focus transition to select element */
