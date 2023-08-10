@@ -15,6 +15,7 @@ if (!storage) {
   settings.className = "disabled";
   admin.className = "disabled";
   signout.className = "disabled";
+  graphs.className= "disabled";
 } else {
   clientname.innerHTML = ` Welcome, ${storage.firstname}`;
   settings.className = "active nav-link";
@@ -23,6 +24,8 @@ if (!storage) {
 
   if (storage.admin) {
     admin.className = "active nav-link";
+
+    graphs.className= "active nav-link";
   }
 }
 
@@ -149,15 +152,18 @@ const displaySearchResults = (searchResults) => {
     name.style.fontFamily = "Roboto";
 
     const price = document.createElement("h1");
-    price.style.fontSize = "25px";
+    price.style.fontSize = "20px";
     price.innerHTML = "Price: " + item.price;
     price.style.fontFamily = "Roboto";
 
     const buy = document.createElement("button");
     buy.id = item.name;
-    buy.style.background = "white";
+    buy.className = "btn ";
+    buy.style.background = "efebe5";
+    buy.style.color="darkgrey";
     buy.style.fontFamily = "Roboto";
-    buy.innerHTML = "Buy";
+    buy.innerHTML = "Add To Cart";
+    buy.style.fontWeight = "bold";
 
     // Add event listener to the Buy button
     buy.addEventListener("click", () => {
@@ -214,6 +220,7 @@ const fetchimages = async () => {
     const image = document.createElement("img");
     image.style.width = "150px";
     image.style.height = "200px";
+    image.style.margin="20px";
     image.className = "card-img-top";
     image.setAttribute("src", item.image);
     return { image, name: item.name, price: item.price };
@@ -230,10 +237,12 @@ const fetchimages = async () => {
     price.style.fontFamily = "Roboto";
     const buy = document.createElement("button");
     buy.id = image.name;
-    buy.className = "btn btn-success";
-    buy.style.background="black";
+    buy.className = "btn ";
+    buy.style.background = "efebe5";
+    buy.style.color="darkgrey";
+    buy.style.fontWeight = "bold";
     buy.style.fontFamily = "Roboto";
-    buy.innerHTML = "Buy";
+    buy.innerHTML = "Add To Cart";
 
     // Add event listener to the Buy button
     buy.addEventListener("click", () => {

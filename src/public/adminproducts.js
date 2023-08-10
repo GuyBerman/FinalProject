@@ -41,8 +41,12 @@ const fetchimages = async () => {
     const del = document.createElement("td");
     del.style.paddingLeft = "190px";
     const deleteprod = document.createElement("button");
-    deleteprod.style.color = "white";
-    deleteprod.style.backgroundColor = "red";
+    deleteprod.style.border = "white";
+    deleteprod.style.backgroundColor = "darkred"; 
+    deleteprod.style.borderRadius = "10%";
+    deleteprod.style.color="white";
+    deleteprod.style.padding = "10px 20px"; 
+    deleteprod.style.fontSize = "16px";
     deleteprod.innerHTML = "Delete";
     deleteprod.id = "deleteBtn";
     deleteprod.name = image.name;
@@ -71,6 +75,7 @@ document.addEventListener("click", async (e) => {
       const errorMessage = await response.text();
       throw new Error(errorMessage);
     }
+    alert("Product deleted successfully");
 
     // Product deleted successfully
     console.log("Product deleted successfully");

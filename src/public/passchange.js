@@ -11,4 +11,5 @@ document.getElementById("passbtn").addEventListener("click", async (e) => {
       "Content-Type": "application/json",
     },
   });
+  alert("Password changed successfully!");
 });
