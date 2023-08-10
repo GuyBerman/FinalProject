@@ -32,3 +32,19 @@ body {
 .rounded-box h2 {
     margin-bottom: 10px;
 }
+
+#salesGraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #GraphA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bar {
+    fill: #4CAF50; /* Change this to your desired color */
+  }
