@@ -195,7 +195,7 @@ sortingSelect.addEventListener('change', async () => {
   const products = await response.json();
 
   // Sort the products based on the selected option
-  if (selectedSortOption === "Newest to oldest") {
+  if (selectedSortOption === "default") {
     displaySearchResults(products);
   } 
   else if (selectedSortOption === 'Price low to high') {
