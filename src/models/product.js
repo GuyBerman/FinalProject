@@ -17,6 +17,19 @@ const productScheme = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  producttype:{
+    type: String,
+    required: true,
+  },
+  productbrand:{
+    type: String,
+    required: true,
+  },
+  counterSell:{
+    type: Number,
+    default: 0,
+  },
+
 });
 
 const Product = mongoose.model("product", productScheme);

@@ -32,4 +32,6 @@ register.addEventListener("click", async () => {
   firstname.value = "";
   lastname.value = "";
   confirmpassword.value="";
+  alert("New user created successfully!");
+
 });

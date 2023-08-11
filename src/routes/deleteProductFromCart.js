@@ -4,9 +4,9 @@ const { User } = require("../models/user");
 
 router.delete("/api/deleteProductFromCart", async (req, res) => {
   const { userId, productName } = req.body;
-
   try {
     const user = await User.findById(userId);
+
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -15,6 +15,7 @@ router.delete("/api/deleteProductFromCart", async (req, res) => {
     delete user.cart[productName];
 
     // Save the updated user
+    user.markModified("cart");
     await user.save();
 
     // Return the updated cart data

@@ -3,15 +3,17 @@ const { Product } = require("../models/product");
 
 const router = express.Router();
 
-
-router.post("/api/search", async (req, res) => {
-  const { name } = req.body;
-  const product = await Product.findOne({ name });
-
-  if (!product) {
-    return res.send({ status: false, error: "No product found" });
+router.get('/api/search', async (req, res) => {
+  const searchQuery = req.query.q;
+  
+  try {
+    const searchResults = await Product.find({
+      name: { $regex: new RegExp(searchQuery, 'i') }
+    });
+    res.json(searchResults);
+  } catch (error) {
+    res.status(500).json({ message: 'Error searching products', error });
   }
-  res.send(product);
 });
 
 exports.searchRouter = router;

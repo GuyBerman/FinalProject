@@ -1,0 +1,52 @@
+body {
+    background-color: #efebe5;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container {
+    padding: 0 30px;
+}
+
+
+.rounded-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(98, 97, 97, 0.2);
+    width: 700px;
+    height: 700px;
+    margin: 20px auto;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.rounded-box:hover {
+    transform: scale(1.05); 
+}
+
+
+.rounded-box h2 {
+    margin-bottom: 10px;
+}
+
+#salesGraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #GraphA, #GraphB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #salesGraphB .x-axis text {
+    font-size: 14px; /* Adjust font size as needed */
+  }
+
+  .bar {
+    fill: #4CAF50; /* Change this to your desired color */
+  }

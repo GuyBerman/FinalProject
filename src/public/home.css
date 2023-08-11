@@ -30,7 +30,10 @@
   box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
     inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
 }
+#sort-item{
+margin-left: 300px;;
 
+}
 .b-example-vr {
   flex-shrink: 0;
   width: 1.5rem;
@@ -43,14 +46,13 @@
 }
 
 .nav-scroller {
-  position: relative;
   z-index: 2;
   height: 2.75rem;
   overflow-y: hidden;
 }
 
 .bg-brown {
-  background-color: #e2dacc; 
+  background-color: #efebe5; 
 }
 
 .nav-scroller .nav {
@@ -85,9 +87,51 @@
   font-family: "Roboto", sans-serif;
   margin-top: 20px;
 }
+
+#filtering {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  place-items: center;
+  column-count: 2; /* Multiple Columns */
+  column-gap: 10px; /* Gap between columns */
+  transition: background-color 0.3s ease-in-out; /* Transition */
+}
+
+/* Apply hover transition to buttons */
+#filtering .btn:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+
+#sort-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the select element */
+#sortingSelect {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease-in-out; /* Transition */
+  
+}
+
+/* Apply focus transition to select element */
+#sortingSelect:focus {
+  outline: none;
+  border-color: #353535; /* Change border color on focus */
+}
+
+
 #ourp
 {
-  text-shadow: 2px 2px 4px rgb(208, 191, 176);
+  text-shadow: 7px 6px 6px rgb(212, 212, 210);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +149,7 @@
   background-color: #efebe5;
   padding: 20px;
   display: flex;
-      justify-content: center;
-      align-items: center;
+  align-items: center;
+  width: 100%; 
+  box-sizing: border-box; 
 }
