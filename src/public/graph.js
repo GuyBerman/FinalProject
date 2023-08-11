@@ -33,7 +33,7 @@ async function fetchSalesData() {
 }
 
 // Create graph
-async function createGraph() {
+async function createGraphA() {
   const salesData = await fetchSalesData();
 
   // Create scales
@@ -76,5 +76,99 @@ svg.append('g')
     .call(d3.axisLeft(y));
 }
 
-// Call the createGraph function to generate the graph
-createGraph();
+// Call the createGraphA function to generate the graph
+createGraphA();
+
+
+// graphB.js
+
+// Dimensions and margins
+const widthB = 600;
+const heightB = 400;
+const marginB = { top: 20, right: 20, bottom: 50, left: 60 };
+
+// Create SVG container for Graph B
+const svgB = d3.select('#salesGraphB')
+  .append('svg')
+  .attr('width', widthB + marginB.left + marginB.right)
+  .attr('height', heightB + marginB.top + marginB.bottom + 150)
+  .append('g')
+  .attr('transform', `translate(${marginB.left},${marginB.top})`);
+
+// Fetch sales data by product type for Graph B
+async function fetchSalesDataByType() {
+  try {
+    const response = await fetch('/api/getProducts');
+    const products = await response.json();
+
+    // Calculate sales by product type
+    const salesByType = {};
+    products.forEach(product => {
+      const type = product.producttype;
+      if (salesByType[type]) {
+        salesByType[type] += product.counterSell;
+      } else {
+        salesByType[type] = product.counterSell;
+      }
+    });
+
+    // Format data for Graph B
+    const data = Object.keys(salesByType).map(type => ({
+      type,
+      sales: salesByType[type],
+    }));
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching sales data for Graph B:', error);
+    return [];
+  }
+}
+
+// Create Graph B based on product types
+async function createGraphB() {
+  const data = await fetchSalesDataByType();
+
+  // Create scales for Graph B
+  const xB = d3.scaleBand()
+    .domain(data.map(d => d.type))
+    .range([0, widthB])
+    .padding(0.1);
+
+  const yB = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.sales) + 1])
+    .nice()
+    .range([heightB, 0]);
+
+  // Create bars for Graph B
+  svgB.selectAll('.bar')
+    .data(data)
+    .enter().append('rect')
+    .attr('class', 'bar')
+    .attr('x', d => xB(d.type))
+    .attr('y', d => yB(d.sales))
+    .attr('width', xB.bandwidth())
+    .attr('height', d => heightB - yB(d.sales));
+
+  // Create x-axis for Graph B
+  svgB.append('g')
+    .attr('class', 'x-axis')
+    .attr('transform', `translate(0,${heightB})`)
+    .call(d3.axisBottom(xB))
+    .selectAll('text')
+    .style('text-anchor', 'end')
+    .attr('dx', '-.8em')
+    .attr('dy', '.15em')
+    .attr('transform', 'rotate(-65)')
+    .attr('y', 10);
+
+  // Create y-axis for Graph B with tick marks every 1.0
+  svgB.append('g')
+    .attr('class', 'y-axis')
+    .call(d3.axisLeft(yB).ticks(10));
+}
+
+// Call the createGraphB function to generate Graph B
+createGraphB();
+
+

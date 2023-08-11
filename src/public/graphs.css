@@ -37,7 +37,7 @@ body {
     align-items: center;
   }
   
-  #GraphA {
+  #GraphA, #GraphB {
     display: flex;
     justify-content: center;
     align-items: center;
