@@ -43,6 +43,10 @@ body {
     align-items: center;
   }
 
+  #salesGraphB .x-axis text {
+    font-size: 14px; /* Adjust font size as needed */
+  }
+
   .bar {
     fill: #4CAF50; /* Change this to your desired color */
   }
