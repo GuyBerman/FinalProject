@@ -3,9 +3,12 @@ if (!storage) {
   location.href = "/";
 }
 
+document.getElementById("numofprod").style.display = "inline";
+
 const cartlist = document.getElementById("cartlist");
 let totalprice = 0,
   count = 0;
+  document.getElementById("numofprod").innerHTML = count;
 
 for (const name of Object.keys(storage.cart)) {
   const li = document.createElement("li");
@@ -103,7 +106,13 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
   });
   const data = await res.json();
   localStorage.setItem("user", JSON.stringify(data));
+  
+  // Clear the cart and update count
   while (cartlist.firstChild) {
     cartlist.removeChild(cartlist.firstChild);
   }
+  count = 0;
+
+  // Update the numofprod element
+  document.getElementById("numofprod").innerHTML = count;
 });
