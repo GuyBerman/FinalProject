@@ -78,6 +78,8 @@ document.addEventListener("click", async (e) => {
 
     // Product deleted successfully
     console.log("Product deleted successfully");
+    alert("The product has deleted!");
+
 
     // Check if the clicked element is a button
     if (e.target.tagName.toLowerCase() === "button") {

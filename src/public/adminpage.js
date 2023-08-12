@@ -15,6 +15,7 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
       "Content-Type": "application/json",
     },
   });
+  alert("The product has updated");
 });
 const newname = document.getElementById("newprod");
 const producttype = document.getElementById("productType");
@@ -31,12 +32,16 @@ const newprice = document.getElementById("newprice");
 const newimg = document.getElementById("newimg");
 const newqua = document.getElementById("newqua");
 
-document.getElementById("createbtn").addEventListener("click", async () => {
+document.getElementById("createbtn").addEventListener("click", async () =>
+ {
+ 
   const file = newimg.files[0];
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await fetch("/api/upload", {
+  const res = await fetch
+  ("/api/upload",
+   {
     method: "POST",
     body: formData,
   });
@@ -63,4 +68,5 @@ document.getElementById("createbtn").addEventListener("click", async () => {
   newprice.value = "";
   newimg.value = "";
   newqua.value = "";
+  alert("The product has create successfully");
 });
