@@ -103,7 +103,13 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
   });
   const data = await res.json();
   localStorage.setItem("user", JSON.stringify(data));
+  
+  // Clear the cart and update count
   while (cartlist.firstChild) {
     cartlist.removeChild(cartlist.firstChild);
   }
+  count = 0;
+
+  // Update the numofprod element
+  document.getElementById("numofprod").innerHTML = count;
 });
