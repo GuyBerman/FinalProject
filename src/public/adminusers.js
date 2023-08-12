@@ -40,6 +40,7 @@ const fetchimages = async () => {
     const del = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete user";
+    deleteButton.dataset.email = user.email; // Store the email in the dataset
     del.appendChild(deleteButton);
     tr.appendChild(del);
 
@@ -51,30 +52,31 @@ fetchimages();
 
 document.addEventListener("click", async (e) => {
   try {
-    const response = await fetch("/api/deleteProduct", {
-      method: "DELETE",
-      body: JSON.stringify({
-        name: e.target.name,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (e.target.tagName.toLowerCase() === "button" && e.target.textContent === "Delete user") {
+      const userEmail = e.target.dataset.email; // Get the stored email from the dataset
+      const response = await fetch("/api/deleteUser", {
+        method: "DELETE",
+        body: JSON.stringify({
+          email: userEmail, // Use the captured user's email for deletion
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!response.ok) {
-      const errorMessage = await response.text();
-      throw new Error(errorMessage);
-    }
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
 
-    // Product deleted successfully
-    console.log("Product deleted successfully");
+      // User deleted successfully
+      console.log("User deleted successfully");
 
-    // Check if the clicked element is a button
-    if (e.target.tagName.toLowerCase() === "button") {
-      // Refresh the site
-      location.reload();
+      // Remove the deleted row from the table
+      const row = e.target.closest("tr");
+      row.remove();
     }
   } catch (error) {
-    console.error("Error deleting product:", error.message);
+    console.error("Error deleting user:", error.message);
   }
 });

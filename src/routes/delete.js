@@ -18,4 +18,15 @@ router.delete("/api/deleteProduct", async (req, res) => {
   res.send(isExist);
 });
 
+router.delete("/api/deleteUser", async (req, res) => {
+  const { name } = req.body;
+  const isExist = await User.deleteOne({ name });
+
+  if (!isExist) {
+    return res.send("User doesnt exists!!!!!!");
+  }
+
+  res.send(isExist);
+});
+
 exports.deleteRouter = router;
