@@ -1,14 +1,41 @@
+document.addEventListener("DOMContentLoaded", function () {
+  
+var firstNameInput = document.getElementById("firstName");
+var lastNameInput = document.getElementById("lastName");
+var ccNumberInput = document.getElementById("cc-number");
+var ccCvvInput = document.getElementById("cc-cvv");
+var ccNameInput = document.getElementById("cc-name");
+
+
+ccNumberInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
+});
+
+ccCvvInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
+});
+
+ccNameInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[0-9]/g, "");
+  });
+
+firstNameInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[0-9]/g, "");
+});
+  
+lastNameInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[0-9]/g, "");
+});
+
 const storage = JSON.parse(localStorage.getItem("user"));
 if (!storage) {
   location.href = "/";
 }
 
-
-
 const cartlist = document.getElementById("cartlist");
 let totalprice = 0,
   count = 0;
-  document.getElementById("numofprod").innerHTML = count;
+document.getElementById("numofprod").innerHTML = count;
 
 for (const name of Object.keys(storage.cart)) {
   const li = document.createElement("li");
@@ -78,6 +105,7 @@ for (const name of Object.keys(storage.cart)) {
   cartlist.appendChild(li);
   totalprice += storage.cart[name].price * storage.cart[name].quantity;
   count += storage.cart[name].quantity;
+
 }
 
 const li = document.createElement("li");
@@ -115,4 +143,9 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
 
   // Update the numofprod element
   document.getElementById("numofprod").innerHTML = count;
+
+    // Redirect to the home page
+    location.href = "/home";
+});
+
 });

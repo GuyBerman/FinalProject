@@ -9,251 +9,131 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
   </head>
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #efebe5;
+  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  padding-right: 15px;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+.rounded-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(98, 97, 97, 0.2);
+    width: 100%;
+    margin: 20px auto;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.rounded-box:hover {
+    transform: scale(1.05); 
+}
+
+
+.rounded-box h2 {
+    margin-bottom: 10px;
+}
+.nav-item {
+            margin-left: 20px;
+        }
+
+        .nav-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .nav {
+            background-color: transparent;
+            color: white;
+            display: flex;
+
+            align-items: center;
+            padding: 10px 30px;
+        }
+        button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 2px 2px;
+  cursor: pointer;
+}
+
+  </style>
+  
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
+    viewBox="0 0 16 16">
+    <symbol id="home" viewBox="0 0 16 16">
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+  </svg>
+  <nav class="nav">
+    <div class="navbar-brand">
+        <a href="/home">
+            <svg class="bi" width="24" height="24">
+                <use xlink:href="#home" />
+            </svg>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="/admin2" class="nav-link" id="settings">Go Back</a>
+    </div>
+</nav>
     <div class="container">
-      <h1>User list</h1>
-      <div id="productCount"></div>
-      <!-- Indicator for the number of products -->
+      <h1>USERS LIST</h1>
+      <input
+      type="text"
+      class="form-control"
+      id="searchInput"
+      placeholder="Search User "
+    />
+      <div class="rounded-box">
       <table class="table table-striped">
         <thead id="transactionlist">
           <tr>
-            <th style="width: 300px">Email</th>
-            <th style="width: 300px">First name</th>
-            <th style="width: 300px">Last name</th>
-            <th style="width: 300px">Password</th>
-            <th style="width: 300px">Admin</th>
+            <th style="width: 30%">Email</th>
+            <th style="width: 10%">First name</th>
+            <th style="width: 16%">Last name</th>
+            <th style="width: 18%">Password</th>
+            <th style="width: 6%">Admin</th>
+            <th style="width: 15%"></th>
           </tr>
         </thead>
         <tbody>
           <table id="users" class="col col-4">
-            <td><span></span></td>
           </table>
         </tbody>
       </table>
-
-      <!-- Add New Product Form -->
-      <div id="newProductForm" style="display: none">
-        <h2>Add New Product</h2>
-        <form onsubmit="event.preventDefault(); addProduct();">
-          <div class="form-group">
-            <label for="productName">Name</label>
-            <input type="text" class="form-control" id="productName" required />
-          </div>
-          <div class="form-group">
-            <label for="productDescription">Description</label>
-            <textarea
-              class="form-control"
-              id="productDescription"
-              rows="3"
-              required
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="productPrice">Price</label>
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input
-                type="number"
-                class="form-control"
-                id="productPrice"
-                step="0.01"
-                required
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="productStock">Stock</label>
-
-            <input
-              type="number"
-              class="form-control"
-              id="productStock"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="productImage">Image</label>
-            <input type="file" class="form-control-file" id="productImage" />
-          </div>
-          <a href="" type="submit" class="btn btn-primary">Add Product</a>>
-        </form>
-        <button class="btn btn-danger" onclick="cancelAddProduct()">
-          Cancel
-        </button>
       </div>
-
-      <a href="/admin" type="submit" class="btn btn-primary">Add Product</a>
-    </div>
-
-    <!-- JavaScript code -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script>
-      // Function to update the product count indicator
-
-      function showNewProductForm() {
-        $("#newProductForm").toggle();
-        $('[onclick="showNewProductForm()"]').toggle();
-      }
-
-      function addProduct() {
-        // Get the values from the form
-        var name = $("#productName").val();
-        var description = $("#productDescription").val();
-        var price = $("#productPrice").val();
-        var stock = $("#productStock").val();
-        var image = $("#productImage").val();
-
-        // Perform validation
-        if (name === "" || description === "" || price === "" || stock === "") {
-          alert("Please fill in all the fields.");
-          return;
-        }
-
-        if (isNaN(stock) || isNaN(parseFloat(price))) {
-          alert("Please enter a valid number for Stock and Price fields.");
-          return;
-        }
-
-        // Add the new product to the table
-        var productId = $(".table tbody tr").length + 1;
-        var newRow =
-          "<tr>" +
-          '<td><img src="' +
-          image +
-          '" alt="' +
-          name +
-          '" style="width: 100px; height: 100px;"></td>' +
-          '<td><span id="product' +
-          productId +
-          'Name">' +
-          name +
-          "</span></td>" +
-          '<td><span id="product' +
-          productId +
-          'Description">' +
-          description +
-          "</span></td>" +
-          '<td><span id="product' +
-          productId +
-          'Price">$' +
-          price +
-          "</span></td>" +
-          '<td><span id="product' +
-          productId +
-          'Stock">' +
-          stock +
-          "</span></td>" +
-          "<td>" +
-          '<button class="btn btn-primary btn-sm" onclick="editProduct(' +
-          productId +
-          ')">Edit</button>' +
-          '<button class="btn btn-success btn-sm" onclick="updateProduct(' +
-          productId +
-          ')" style="display: none;">Update</button>' +
-          '<button class="btn btn-danger btn-sm" onclick="deleteProduct(' +
-          productId +
-          ')">Delete</button>' +
-          "</td>" +
-          "</tr>";
-
-        $(".table tbody").append(newRow);
-
-        // Clear the form
-        $("#productName").val("");
-        $("#productDescription").val("");
-        $("#productPrice").val("");
-        $("#productStock").val("");
-        $("#productImage").val("");
-
-        // Hide the form
-        $("#newProductForm").hide();
-        $('[onclick="showNewProductForm()"]').show();
-
-        // Update the product count
-        updateProductCount();
-      }
-
-      function cancelAddProduct() {
-        $("#newProductForm").hide();
-        $('[onclick="showNewProductForm()"]').show();
-      }
-
-      function editProduct(productId) {
-        // Enable the input fields for editing
-        $("#product" + productId + "Name").html(
-          '<input type="text" class="form-control" value="' +
-            $("#product" + productId + "Name").html() +
-            '">'
-        );
-        $("#product" + productId + "Description").html(
-          '<textarea class="form-control" rows="3">' +
-            $("#product" + productId + "Description").html() +
-            "</textarea>"
-        );
-        $("#product" + productId + "Price").html(
-          '<div class="input-group"><span class="input-group-addon">$</span><input type="number" step="0.01" class="form-control" value="' +
-            $("#product" + productId + "Price")
-              .html()
-              .substring(1) +
-            '"></div>'
-        );
-        $("#product" + productId + "Stock").html(
-          '<input type="number" class="form-control" value="' +
-            $("#product" + productId + "Stock").html() +
-            '">'
-        );
-
-        // Hide the "Edit" button and show the "Update" button
-        $('button[onclick="editProduct(' + productId + ')"]').hide();
-        $('button[onclick="updateProduct(' + productId + ')"]').show();
-      }
-
-      function updateProduct(productId) {
-        // Get the updated values from the input fields
-        var name = $("#product" + productId + "Name input").val();
-        var description = $(
-          "#product" + productId + "Description textarea"
-        ).val();
-        var price = $("#product" + productId + "Price input").val();
-        var stock = $("#product" + productId + "Stock input").val();
-
-        // Perform validation
-        if (name === "" || description === "" || price === "" || stock === "") {
-          alert("Please fill in all the fields.");
-          return;
-        }
-
-        if (isNaN(stock) || isNaN(parseFloat(price))) {
-          alert("Please enter a valid number for Stock and Price fields.");
-          return;
-        }
-
-        // Update the product details in the table
-        $("#product" + productId + "Name").html(name);
-        $("#product" + productId + "Description").html(description);
-        $("#product" + productId + "Price").html("$" + price);
-        $("#product" + productId + "Stock").html(stock);
-
-        // Hide the input fields and show the "Edit" button
-        $('button[onclick="editProduct(' + productId + ')"]').show();
-        $('button[onclick="updateProduct(' + productId + ')"]').hide();
-      }
-
-      function deleteProduct(productId) {
-        if (confirm("Are you sure you want to delete this product?")) {
-          $("#product" + productId + "Name")
-            .closest("tr")
-            .remove();
-
-          // Update the product count
-          updateProductCount();
-        }
-      }
-
-      // Initial update of product count
-      updateProductCount();
-    </script>
     <script src="adminusers.js"></script>
   </body>
 </html>
