@@ -7,21 +7,34 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid #ccc;
             margin-top: 20px;
         }
 
         th, td {
             padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #dee2e6;
         }
 
         th {
@@ -30,66 +43,68 @@
             font-weight: bold;
         }
 
-        tr:nth-child(even) {
-            background-color: #efebe5;
+        .transaction-gap {
+            height: 10px;
+            background-color: transparent;
         }
-        .nav-item {
+
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #343a40;
+            color: white;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.936);
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
             margin-left: 20px;
         }
 
+        .nav-button {
+            margin-right: 20px;
+        }
+
         .nav-link {
-            color: #007bff;
+            color: white;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #0056b3;
-        }
-        .navbar-brand {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-        }
-        .nav {
-            background-color: transparent;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 30px;
+            color: #cfd8dc;
         }
     </style>
     <link rel="stylesheet" href="/adminproducts.css" />
 </head>
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house"
-    viewBox="0 0 16 16">
-    <symbol id="home" viewBox="0 0 16 16">
-      <path
-        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-  </svg>
-  <nav class="nav">
-    <div class="navbar-brand">
-        <a href="/home">
-            <svg class="bi" width="24" height="24">
-                <use xlink:href="#home" />
-            </svg>
-        </a>
+    <nav class="nav">
+        <div class="nav-button">
+            <a href="/home" class="nav-link" id="settings">Home</a>
+        </div>
+        <div class="nav-button">
+            <a href="/userinfo" class="nav-link" id="settings">Back to settings</a>
+        </div>
+    </nav>
+    <div class="container">
+        <table id="userTable">
+            <tbody>
+                <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
+                <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
+                <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
+                <!-- Add more transaction gaps here if needed -->
+            </tbody>
+        </table>
     </div>
-    <div class="nav-item">
-        <a href="/userinfo" class="nav-link" id="settings">Go Back</a>
-    </div>
-</nav>
-    <table id="userTable">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
     <script src="/usertransactions.js"></script>
 </body>
 </html>
