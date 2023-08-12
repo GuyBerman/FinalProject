@@ -15,7 +15,7 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
       "Content-Type": "application/json",
     },
   });
-  alert("The product has updated");
+  alert("Product updated successfully!");
 });
 const newname = document.getElementById("newprod");
 const producttype = document.getElementById("productType");
@@ -62,6 +62,7 @@ document.getElementById("createbtn").addEventListener("click", async () =>
       productbrand: myoption2,
     }),
   });
+  alert("Product updated successfully!");
   newname.value = "";
   producttype.value = "";
   productbrand.value = "";

@@ -20,5 +20,6 @@ document.getElementById("signin").addEventListener("click", async (e) => {
     return;
   }
   localStorage.setItem("user", JSON.stringify(data.error));
+  
   location.href = "/";
 });
