@@ -30,7 +30,6 @@
   </nav>
     <div class="container">
       <h1>Product Listing</h1>
-      <div id="productCount"></div>
       <!-- Indicator for the number of products -->
       <table class="table table-striped">
         <thead>
@@ -108,11 +107,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
-      // Function to update the product count indicator
-      function updateProductCount() {
-        var productCount = $(".table tbody tr").length;
-        $("#productCount").html("<p>Total Products: " + productCount + "</p>");
-      }
 
       function showNewProductForm() {
         $("#newProductForm").toggle();

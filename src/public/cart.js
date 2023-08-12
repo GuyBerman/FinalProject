@@ -141,8 +141,12 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
   }
   count = 0;
 
+  alert("Transaction successful! Thank you for your purchase.");
+
   // Update the numofprod element
   document.getElementById("numofprod").innerHTML = count;
+
+ 
 
     // Redirect to the home page
     location.href = "/home";
