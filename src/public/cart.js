@@ -126,7 +126,7 @@ document.getElementById("numofprod").innerHTML = count;
 
 document.getElementById("transaction").addEventListener("click", async (e) => {
   e.preventDefault();
-
+  
   const firstName = firstNameInput.value.trim();
   const lastName = lastNameInput.value.trim();
   const email = emailInput.value.trim();
@@ -135,7 +135,6 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
   const ccName = ccNameInput.value.trim();
   const expirationDate = new Date(document.getElementById("cc-expiration").value);
   const currentDate = new Date();
-
   if (firstName === "" || lastName === "" || email === "" || ccNumber === "" || ccCvv === "" || ccName === "") {
     alert("Please fill in all required fields.");
     return;
@@ -143,7 +142,17 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
 
   if (expirationDate <= currentDate) {
     alert("Please enter a valid expiration date in the future.");
-    return;}
+    return;
+  }
+  if (!/^\d{3}$/.test(ccCvv)) {
+    alert("CVV must be exactly 3 digits long.");
+    return;
+  }
+
+  if (!/^\d{16}$/.test(ccNumber)) {
+    alert("Credit card number must be exactly 16 digits long.");
+    return;
+  }
 
   const res = await fetch("/api/transaction", {
     method: "POST",
@@ -153,27 +162,25 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
     body: JSON.stringify({ userid: storage._id }),
   });
 
+  if (res.ok) {
+    const data = await res.json();
+    localStorage.setItem("user", JSON.stringify(data));
 
-   if (res.ok) {
-      const data = await res.json();
-      localStorage.setItem("user", JSON.stringify(data));
-
-      // Clear the cart and update count
-      while (cartlist.firstChild) {
-        cartlist.removeChild(cartlist.firstChild);
-      }
-      count = 0;
-
-      alert("Transaction successful! Thank you for your purchase.");
-
-      // Update the numofprod element
-      document.getElementById("numofprod").innerHTML = count;
-
-      // Redirect to the home page
-      location.href = "/home";
-    } else {
-      alert("Transaction failed. Please try again later.");
+    // Clear the cart and update count
+    while (cartlist.firstChild) {
+      cartlist.removeChild(cartlist.firstChild);
     }
-});
+    count = 0;
 
+    alert("Transaction successful! Thank you for your purchase.");
+
+    // Update the numofprod element
+    document.getElementById("numofprod").innerHTML = count;
+
+    // Redirect to the home page
+    location.href = "/home";
+  } else {
+    alert("Transaction failed. Please try again later.");
+  }
+});
 });
