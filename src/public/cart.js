@@ -3,7 +3,7 @@ if (!storage) {
   location.href = "/";
 }
 
-document.getElementById("numofprod").style.display = "inline";
+
 
 const cartlist = document.getElementById("cartlist");
 let totalprice = 0,
