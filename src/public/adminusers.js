@@ -1,80 +1,101 @@
 const fetchimages = async () => {
-  const res = await fetch("/api/getUser");
-  const User = await res.json();
-  const user = User.map((item) => {
-    return {
-      email: item.email,
-      firstname: item.firstname,
-      lastname: item.lastname,
-      password: item.password,
-      admin: item.admin,
-      cart: item.cart,
-    };
-  });
-
-  user.map((user) => {
+  try {
+    const res = await fetch("/api/getUser");
+    const User = await res.json();
     const table = document.getElementById("users"); // Get the table element
-    const tr = document.createElement("tr");
 
-    // Create <td> elements for each data element
-    const emailCell = document.createElement("td");
-    emailCell.innerHTML = user.email;
-    tr.appendChild(emailCell);
+    User.forEach((item) => {
+      const tr = document.createElement("tr");
 
-    const firstnameCell = document.createElement("td");
-    firstnameCell.innerHTML = user.firstname;
-    tr.appendChild(firstnameCell);
+      const emailCell = document.createElement("td");
+      emailCell.innerHTML = item.email;
+      tr.appendChild(emailCell);
 
-    const lastnameCell = document.createElement("td");
-    lastnameCell.innerHTML = user.lastname;
-    tr.appendChild(lastnameCell);
+      const firstnameCell = document.createElement("td");
+      firstnameCell.innerHTML = item.firstname;
+      tr.appendChild(firstnameCell);
 
-    const passwordCell = document.createElement("td");
-    passwordCell.innerHTML = user.password;
-    tr.appendChild(passwordCell);
+      const lastnameCell = document.createElement("td");
+      lastnameCell.innerHTML = item.lastname;
+      tr.appendChild(lastnameCell);
 
-    const adminCell = document.createElement("td");
-    adminCell.innerHTML = user.admin;
-    tr.appendChild(adminCell);
+      const passwordCell = document.createElement("td");
+      passwordCell.innerHTML = item.password;
+      tr.appendChild(passwordCell);
 
-    const del = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete user";
-    del.appendChild(deleteButton);
-    tr.appendChild(del);
+      const adminCell = document.createElement("td");
+      adminCell.innerHTML = item.admin;
+      tr.appendChild(adminCell);
 
-    table.appendChild(tr); // Append the table row to the table
-  });
+      const del = document.createElement("td");
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete user";
+      deleteButton.dataset.email = item.email; // Store the email in the dataset
+
+      deleteButton.addEventListener("click", async () => {
+        try {
+          if (!item.admin) {
+          // Inside the deleteUser event listener
+          console.log("Deleting user with email:", deleteButton.dataset.email);
+          const response = await fetch("/api/deleteUser", {
+            method: "DELETE",
+            body: JSON.stringify({
+              email: deleteButton.dataset.email,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+          }
+
+          // User deleted successfully
+          console.log("User deleted successfully");
+
+          // Remove the deleted row from the table
+          tr.remove();
+        } else {
+          // Show alert if admin tries to delete another admin
+          alert("You cannot delete another admin user.");
+        }
+        } catch (error) {
+          console.error("Error deleting user:", error.message);
+        }
+      });
+
+      del.appendChild(deleteButton);
+      tr.appendChild(del);
+
+      table.appendChild(tr); // Append the table row to the table
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error.message);
+  }
 };
 
-fetchimages();
+document.addEventListener('DOMContentLoaded', function () {
+  fetchimages();
+});
 
-document.addEventListener("click", async (e) => {
-  try {
-    const response = await fetch("/api/deleteProduct", {
-      method: "DELETE",
-      body: JSON.stringify({
-        name: e.target.name,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+const searchInput = document.getElementById('search-input');
+let typingTimeout;
 
-    if (!response.ok) {
-      const errorMessage = await response.text();
-      throw new Error(errorMessage);
+searchInput.addEventListener('input', async (event) => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  showAllFilter.classList.add("active");
+  event.preventDefault(); // Prevent form submission
+  clearTimeout(typingTimeout);
+  const searchTerm = searchInput.value.toLowerCase();
+  typingTimeout = setTimeout(async () => {
+    try {
+      const response = await fetch(`/api/search?q=${searchTerm}`);
+      const searchResults = await response.json();
+      displaySearchResults(searchResults);
+    } catch (error) {
+      console.error('Error searching products:', error);
     }
-
-    // Product deleted successfully
-    console.log("Product deleted successfully");
-
-    // Check if the clicked element is a button
-    if (e.target.tagName.toLowerCase() === "button") {
-      // Refresh the site
-      location.reload();
-    }
-  } catch (error) {
-    console.error("Error deleting product:", error.message);
-  }
+  }, 100); // Delay in milliseconds
 });
