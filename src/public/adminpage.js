@@ -3,7 +3,7 @@ const price = document.getElementById("prodprice");
 const changeq = document.getElementById("prodqua");
 
 document.getElementById("updatebtn").addEventListener("click", async () => {
-  await fetch("/api/updatePrice", {
+  const res = await fetch("/api/updatePrice", {
     method: "PUT",
     body: JSON.stringify({
       name: prodname.value,
@@ -15,7 +15,18 @@ document.getElementById("updatebtn").addEventListener("click", async () => {
       "Content-Type": "application/json",
     },
   });
-  alert("Product updated successfully!");
+
+  const responseText = await res.text(); // Get the response as text
+
+  
+  if (responseText === "Item not found!!!!!!")
+  {
+    alert("Product didn't found!");
+  }
+  else{
+    alert("Product updated successfully!");
+  }
+  
 });
 const newname = document.getElementById("newprod");
 const producttype = document.getElementById("productType");
@@ -62,7 +73,6 @@ document.getElementById("createbtn").addEventListener("click", async () =>
       productbrand: myoption2,
     }),
   });
-  alert("Product updated successfully!");
   newname.value = "";
   producttype.value = "";
   productbrand.value = "";
