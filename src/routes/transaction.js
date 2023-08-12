@@ -13,25 +13,38 @@ router.post("/api/transaction", async (req, res) => {
     );
   }
 
-    // Update counterSell for products in user's cart
-    for (const productName in user.cart) {
-      if (user.cart.hasOwnProperty(productName)) {
-        const quantityBought = user.cart[productName].quantity;
-        const product = await Product.findOne({ name: productName });
-  
-        if (product) {
-          product.counterSell += quantityBought; // Increment counterSell
-          await product.save();
-        }
+  // Update counterSell for products in user's cart
+  for (const productName in user.cart) {
+    if (user.cart.hasOwnProperty(productName)) {
+      const quantityBought = user.cart[productName].quantity;
+      const product = await Product.findOne({ name: productName });
+
+      if (product) {
+        product.counterSell += quantityBought; // Increment counterSell
+        await product.save();
       }
     }
+  }
 
-  user.transaction.push(user.cart);
-  user.cart = {};
-  user.markModified("cart");
-  user.markModified("transaction");
-  await user.save();
+  if (!isEmpty(user.cart)) { // Check if the cart is not empty
+    user.transaction.push(user.cart);
+    user.cart = {};
+    user.markModified("cart");
+    user.markModified("transaction");
+    await user.save();
+  }
+  
   res.send(user);
 });
+
+// Helper function to check if an object is empty
+function isEmpty(obj) {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return false;
+    }
+  }
+  return true;
+}
 
 exports.transactionRouter = router;
