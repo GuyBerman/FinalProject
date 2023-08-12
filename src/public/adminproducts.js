@@ -75,7 +75,6 @@ document.addEventListener("click", async (e) => {
       const errorMessage = await response.text();
       throw new Error(errorMessage);
     }
-    alert("Product deleted successfully");
 
     // Product deleted successfully
     console.log("Product deleted successfully");
