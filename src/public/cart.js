@@ -147,5 +147,4 @@ document.addEventListener("DOMContentLoaded", function () {
       // Redirect to the home page
       location.href = "/home";
   });
-  
   });
