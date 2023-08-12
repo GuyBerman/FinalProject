@@ -76,4 +76,26 @@ const fetchimages = async () => {
   }
 };
 
-fetchimages();
+document.addEventListener('DOMContentLoaded', function () {
+  fetchimages();
+});
+
+const searchInput = document.getElementById('search-input');
+let typingTimeout;
+
+searchInput.addEventListener('input', async (event) => {
+  filterButtons.forEach(btn => btn.classList.remove("active"));
+  showAllFilter.classList.add("active");
+  event.preventDefault(); // Prevent form submission
+  clearTimeout(typingTimeout);
+  const searchTerm = searchInput.value.toLowerCase();
+  typingTimeout = setTimeout(async () => {
+    try {
+      const response = await fetch(`/api/search?q=${searchTerm}`);
+      const searchResults = await response.json();
+      displaySearchResults(searchResults);
+    } catch (error) {
+      console.error('Error searching products:', error);
+    }
+  }, 100); // Delay in milliseconds
+});
