@@ -67,7 +67,7 @@
         .nav-buttons {
             display: flex;
             align-items: center;
-            margin-left: 20px; /* Adjusted margin */
+            margin-left: 20px;
         }
 
         .nav-button {
@@ -91,8 +91,9 @@
         <div class="nav-buttons">
             <div class="nav-button">
                 <a href="/home" class="nav-link">
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#house" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path d="M8 1a1 1 0 0 0-1 1v12.5a.5.5 0 0 0 1 0V9h2v5.5a.5.5 0 0 0 1 0V2a1 1 0 0 0-1-1z"/>
+                        <path d="M15.5 7.854l-7-6.5a.5.5 0 0 0-.662 0l-7 6.5a.5.5 0 0 0-.162.638l.856 5.12a2 2 0 0 0 2.471 1.443L8 12l6.835 3.055a2 2 0 0 0 2.471-1.443l.856-5.12a.5.5 0 0 0-.162-.638z"/>
                     </svg>
                 </a>
             </div>
@@ -103,25 +104,11 @@
     </nav>
     <div class="container">
         <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
             <tbody>
-                <!-- Sample transaction rows -->
-                <tr>
-                    <td>Product 1</td>
-                    <td>$20.00</td>
-                </tr>
                 <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
-                <tr>
-                    <td>Product 2</td>
-                    <td>$15.00</td>
-                </tr>
                 <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
-                <!-- Add more transaction rows here -->
+                <tr class="transaction-gap"></tr> <!-- Gap between transactions -->
+                <!-- Add more transaction gaps here if needed -->
             </tbody>
         </table>
     </div>
