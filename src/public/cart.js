@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
-var firstNameInput = document.getElementById("firstName");
-var lastNameInput = document.getElementById("lastName");
-var ccNumberInput = document.getElementById("cc-number");
-var ccCvvInput = document.getElementById("cc-cvv");
-var ccNameInput = document.getElementById("cc-name");
+  var firstNameInput = document.getElementById("firstName");
+  var lastNameInput = document.getElementById("lastName");
+  var emailInput = document.getElementById("email");
+  var ccNumberInput = document.getElementById("cc-number");
+  var ccCvvInput = document.getElementById("cc-cvv");
+  var ccNameInput = document.getElementById("cc-name");
 
 
 ccNumberInput.addEventListener("input", function () {
@@ -94,6 +94,7 @@ for (const name of Object.keys(storage.cart)) {
     } catch (error) {
       console.error("Error deleting product from cart:", error);
     }
+
     location.reload();
   });
 
@@ -125,6 +126,25 @@ document.getElementById("numofprod").innerHTML = count;
 
 document.getElementById("transaction").addEventListener("click", async (e) => {
   e.preventDefault();
+
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
+  const email = emailInput.value.trim();
+  const ccNumber = ccNumberInput.value.trim();
+  const ccCvv = ccCvvInput.value.trim();
+  const ccName = ccNameInput.value.trim();
+  const expirationDate = new Date(document.getElementById("cc-expiration").value);
+  const currentDate = new Date();
+
+  if (firstName === "" || lastName === "" || email === "" || ccNumber === "" || ccCvv === "" || ccName === "") {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  if (expirationDate <= currentDate) {
+    alert("Please enter a valid expiration date in the future.");
+    return;}
+
   const res = await fetch("/api/transaction", {
     method: "POST",
     headers: {
@@ -132,24 +152,28 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
     },
     body: JSON.stringify({ userid: storage._id }),
   });
-  const data = await res.json();
-  localStorage.setItem("user", JSON.stringify(data));
-  
-  // Clear the cart and update count
-  while (cartlist.firstChild) {
-    cartlist.removeChild(cartlist.firstChild);
-  }
-  count = 0;
 
-  alert("Transaction successful! Thank you for your purchase.");
 
-  // Update the numofprod element
-  document.getElementById("numofprod").innerHTML = count;
+   if (res.ok) {
+      const data = await res.json();
+      localStorage.setItem("user", JSON.stringify(data));
 
- 
+      // Clear the cart and update count
+      while (cartlist.firstChild) {
+        cartlist.removeChild(cartlist.firstChild);
+      }
+      count = 0;
 
-    // Redirect to the home page
-    location.href = "/home";
+      alert("Transaction successful! Thank you for your purchase.");
+
+      // Update the numofprod element
+      document.getElementById("numofprod").innerHTML = count;
+
+      // Redirect to the home page
+      location.href = "/home";
+    } else {
+      alert("Transaction failed. Please try again later.");
+    }
 });
 
 });
