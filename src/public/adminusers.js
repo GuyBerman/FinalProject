@@ -14,34 +14,34 @@ const fetchimages = async () => {
 
   user.map((user) => {
     const table = document.getElementById("users"); // Get the table element
-    table.style.width = "100%";
     const tr = document.createElement("tr");
-    const imageCell = document.createElement("td");
-    const email = document.createElement("td");
-    email.innerHTML = user.email;
-    tr.appendChild(email);
 
-    const firstname = document.createElement("td");
-    firstname.innerHTML = user.firstname;
-    firstname.style.paddingLeft = "130px";
-    tr.appendChild(firstname);
+    // Create <td> elements for each data element
+    const emailCell = document.createElement("td");
+    emailCell.innerHTML = user.email;
+    tr.appendChild(emailCell);
 
-    const lastname = document.createElement("td");
-    lastname.innerHTML = user.lastname;
-    firstname.style.paddingLeft = "50px";
-    tr.appendChild(lastname);
+    const firstnameCell = document.createElement("td");
+    firstnameCell.innerHTML = user.firstname;
+    tr.appendChild(firstnameCell);
 
-    const password = document.createElement("td");
-    password.innerHTML = user.password;
-    firstname.style.paddingLeft = "130px";
-    tr.appendChild(password);
+    const lastnameCell = document.createElement("td");
+    lastnameCell.innerHTML = user.lastname;
+    tr.appendChild(lastnameCell);
 
-    const admin = document.createElement("td");
-    admin.innerHTML = user.admin;
-    tr.appendChild(admin);
+    const passwordCell = document.createElement("td");
+    passwordCell.innerHTML = user.password;
+    tr.appendChild(passwordCell);
+
+    const adminCell = document.createElement("td");
+    adminCell.innerHTML = user.admin;
+    tr.appendChild(adminCell);
 
     const del = document.createElement("td");
-    del.style.paddingLeft = "190px";
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete user";
+    del.appendChild(deleteButton);
+    tr.appendChild(del);
 
     table.appendChild(tr); // Append the table row to the table
   });
