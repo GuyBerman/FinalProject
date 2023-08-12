@@ -3,12 +3,10 @@ if (!storage) {
   location.href = "/";
 }
 
-
-
 const cartlist = document.getElementById("cartlist");
 let totalprice = 0,
   count = 0;
-  document.getElementById("numofprod").innerHTML = count;
+document.getElementById("numofprod").innerHTML = count;
 
 for (const name of Object.keys(storage.cart)) {
   const li = document.createElement("li");
@@ -78,6 +76,7 @@ for (const name of Object.keys(storage.cart)) {
   cartlist.appendChild(li);
   totalprice += storage.cart[name].price * storage.cart[name].quantity;
   count += storage.cart[name].quantity;
+
 }
 
 const li = document.createElement("li");
@@ -115,4 +114,7 @@ document.getElementById("transaction").addEventListener("click", async (e) => {
 
   // Update the numofprod element
   document.getElementById("numofprod").innerHTML = count;
+
+    // Redirect to the home page
+    location.href = "/home";
 });
