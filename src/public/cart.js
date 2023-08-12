@@ -3,9 +3,12 @@ if (!storage) {
   location.href = "/";
 }
 
+document.getElementById("numofprod").style.display = "inline";
+
 const cartlist = document.getElementById("cartlist");
 let totalprice = 0,
   count = 0;
+  document.getElementById("numofprod").innerHTML = count;
 
 for (const name of Object.keys(storage.cart)) {
   const li = document.createElement("li");
