@@ -34,4 +34,15 @@ router.put("/api/updatePass", async (req, res) => {
   res.send(user);
 });
 
+
+router.put("/api/updateQuantity", async (req, res) => {
+  const { name } = req.body;
+  const product = await Product.findOne({ name });
+  product.quantity -= 1;
+  await product.save();
+  res.send(product);
+});
+
+
+
 exports.updateRouter = router;

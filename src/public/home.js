@@ -277,5 +277,5 @@ const addToCart = async (productName, price) => {
     location.reload();
   } catch (error) {
     console.error(error);
-  }
+  }
 };
