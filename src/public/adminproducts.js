@@ -61,6 +61,12 @@ fetchimages();
 
 document.addEventListener("click", async (e) => {
   try {
+    if(e.target.name)
+    {
+      // Product deleted successfully
+    console.log("Product deleted successfully");
+    alert("The product has deleted!");
+    }
     const response = await fetch("/api/deleteProduct", {
       method: "DELETE",
       body: JSON.stringify({
@@ -76,10 +82,7 @@ document.addEventListener("click", async (e) => {
       throw new Error(errorMessage);
     }
 
-    // Product deleted successfully
-    console.log("Product deleted successfully");
-    alert("The product has deleted!");
-
+    
 
     // Check if the clicked element is a button
     if (e.target.tagName.toLowerCase() === "button") {
