@@ -1,15 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function ()
+{
   // Existing code for restricting input in first name and last name fields
-  var firstNameInput = document.getElementById("firstName");
-  var lastNameInput = document.getElementById("lastName");
 
-  firstNameInput.addEventListener("input", function () {
-    this.value = this.value.replace(/[0-9]/g, "");
-  });
-
-  lastNameInput.addEventListener("input", function () {
-    this.value = this.value.replace(/[0-9]/g, "");
-  });
 
   // Existing code for deleting a product from cart...
   const storage = JSON.parse(localStorage.getItem("user"));
@@ -17,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     location.href = "/";
   }
 
-  const cartlist = document.getElementById("cartlist");
-  let totalprice = 0,
-    count = 0;
+const cartlist = document.getElementById("cartlist");
+let totalprice = 0,
+  count = 0;
+document.getElementById("numofprod").innerHTML = count;
 
   for (const name of Object.keys(storage.cart)) {
     const li = document.createElement("li");
@@ -126,6 +119,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var ccNumberInput = document.getElementById("cc-number");
   var ccCvvInput = document.getElementById("cc-cvv");
   var ccNameInput = document.getElementById("cc-name");
+  var firstNameInput = document.getElementById("firstName");
+  var lastNameInput = document.getElementById("lastName");
+
+  firstNameInput.addEventListener("input", function () {
+    this.value = this.value.replace(/[0-9]/g, "");
+  });
+
+  lastNameInput.addEventListener("input", function () {
+    this.value = this.value.replace(/[0-9]/g, "");
+  });
 
   ccNumberInput.addEventListener("input", function () {
     this.value = this.value.replace(/[^0-9]/g, "");
@@ -134,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
   ccCvvInput.addEventListener("input", function () {
     this.value = this.value.replace(/[^0-9]/g, "");
   });
-  
   ccNameInput.addEventListener("input", function () {
     this.value = this.value.replace(/[0-9]/g, "");
   });
