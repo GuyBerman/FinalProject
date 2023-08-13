@@ -10,10 +10,9 @@ const { updateCartRouter } = require("./routes/cart_update");
 const { getUserRouter } = require("./routes/getuser");
 const { transactionRouter } = require("./routes/transaction");
 const { searchRouter } = require("./routes/search");
-// Import the deleteProductFromCart route
 const deleteProductFromCartRoute = require("./routes/deleteProductFromCart");
 
-// Mount the deleteProductFromCart route
+
 
 const app = express();
 

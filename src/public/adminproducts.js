@@ -17,7 +17,7 @@ const fetchimages = async () => {
   });
 
   images.map((image) => {
-    const table = document.getElementById("products"); // Get the table element
+    const table = document.getElementById("products");
     const tr = document.createElement("tr");
     const imageCell = document.createElement("td");
     imageCell.appendChild(image.image);
