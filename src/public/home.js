@@ -73,7 +73,7 @@ showAllFilter.addEventListener("click", async () => {
 capsulesFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
   capsulesFilter.classList.add("active");
-  const selectedType = "Capsules"; // Replace with the desired type
+  const selectedType = "Capsules"; 
   try {
     const response = await fetch(`/api/getProducts?type=${selectedType}`);
     const products = await response.json();
@@ -86,7 +86,7 @@ capsulesFilter.addEventListener("click", async () => {
 accessoriesFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
   accessoriesFilter.classList.add("active");
-  const selectedType = "Accessories"; // Replace with the desired type
+  const selectedType = "Accessories"; 
   try {
     const response = await fetch(`/api/getProducts?type=${selectedType}`);
     const products = await response.json();
@@ -99,7 +99,7 @@ accessoriesFilter.addEventListener("click", async () => {
 machinesFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
   machinesFilter.classList.add("active");
-  const selectedType = "Machines"; // Replace with the desired type
+  const selectedType = "Machines";
   try {
     const response = await fetch(`/api/getProducts?type=${selectedType}`);
     const products = await response.json();
@@ -112,7 +112,7 @@ machinesFilter.addEventListener("click", async () => {
 nespresspFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
   nespresspFilter.classList.add("active");
-  const selectedBrand = "Nespresso"; // Replace with the desired type
+  const selectedBrand = "Nespresso"; 
   try {
     const response = await fetch(`/api/getProducts?brand=${selectedBrand}`);
     const products = await response.json();
@@ -125,7 +125,7 @@ nespresspFilter.addEventListener("click", async () => {
 eliteFilter.addEventListener("click", async () => {
   filterButtons.forEach(btn => btn.classList.remove("active"));
   eliteFilter.classList.add("active");
-  const selectedBrand = "Elite"; // Replace with the desired type
+  const selectedBrand = "Elite"; 
   try {
     const response = await fetch(`/api/getProducts?brand=${selectedBrand}`);
     const products = await response.json();

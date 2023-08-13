@@ -97,14 +97,14 @@ margin-left: 300px;;
   padding: 10px;
   border-radius: 5px;
   place-items: center;
-  column-count: 2; /* Multiple Columns */
-  column-gap: 10px; /* Gap between columns */
-  transition: background-color 0.3s ease-in-out; /* Transition */
+  column-count: 2; 
+  column-gap: 10px; 
+  transition: background-color 0.3s ease-in-out;
 }
 
-/* Apply hover transition to buttons */
+
 #filtering .btn:hover {
-  background-color: #f0f0f0; /* Change background color on hover */
+  background-color: #f0f0f0; 
 }
 
 
@@ -113,19 +113,19 @@ margin-left: 300px;;
   align-items: center;
 }
 
-/* Style the select element */
+
 #sortingSelect {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  transition: border-color 0.3s ease-in-out; /* Transition */
+  transition: border-color 0.3s ease-in-out; 
   
 }
 
-/* Apply focus transition to select element */
+
 #sortingSelect:focus {
   outline: none;
-  border-color: #353535; /* Change border color on focus */
+  border-color: #353535; 
 }
 
 

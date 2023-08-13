@@ -20,7 +20,7 @@ router.post("/api/transaction", async (req, res) => {
       const product = await Product.findOne({ name: productName });
 
       if (product) {
-        product.counterSell += quantityBought; // Increment counterSell
+        product.counterSell += quantityBought; 
         await product.save();
       }
     }
